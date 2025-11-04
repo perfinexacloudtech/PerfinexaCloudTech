@@ -1,0 +1,20 @@
+# Email Configuration for CloudTech Newsletter
+# Copy this file to .env.local and fill in your email credentials
+
+# Your email service credentials (Gmail example)
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password
+
+# Admin email to receive student information
+ADMIN_EMAIL=admin@cloudtech.com
+
+# Instructions:
+# 1. For Gmail, you need to:
+#    - Enable 2-factor authentication
+#    - Generate an "App Password" (not your regular password)
+#    - Use the app password in EMAIL_PASS
+# 
+# 2. For other email services, update the service name in the API route
+#    (currently set to 'gmail' in src/app/api/subscribe/route.ts)
+#
+# 3. Make sure to add .env.local to your .gitignore file
