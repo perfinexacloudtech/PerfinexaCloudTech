@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import SmoothScroll from "@/components/common/SmoothScroll";
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} font-inter antialiased bg-green-50`} suppressHydrationWarning={true}>
+        <Analytics />
         <Toaster position="top-center" />
          <SmoothScroll />
         <Navigation />
