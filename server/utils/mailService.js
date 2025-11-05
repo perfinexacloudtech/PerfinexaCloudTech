@@ -111,7 +111,7 @@ const sendContactEmail = async ({ firstName, lastName, email, subject = "No Subj
     console.log("Sending contact email with data:", { firstName, lastName, email, subject, message });
 
     const mailOptions = {
-      from: `"Perfinexa CloudTech" <${process.env.BREVO_USER}>`,
+      from: `"Perfinexa CloudTech" <${'perfinexacloudtech@gmail.com'}>`,
       to: process.env.ADMIN_EMAIL,
       subject: `New Contact Form: ${subject}`,
       html: `
