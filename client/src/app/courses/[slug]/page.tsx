@@ -2,7 +2,7 @@
 
 
 
-import { coursesData } from "@/app/courses/CourseData";
+import { coursesData } from "@/data/courses";
 import CourseDetailsClient from "@/components/CourseDetailsClient";
 
 export function generateStaticParams() {
