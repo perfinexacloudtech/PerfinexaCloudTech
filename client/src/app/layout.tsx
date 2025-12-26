@@ -10,6 +10,9 @@ import {  getOrganizationSchema } from "@/lib/seo";
 import { getPageMetadata } from "@/lib/Metadata";
 import Script from "next/script";
 
+
+
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -28,21 +31,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} font-inter antialiased bg-green-50`}
-        suppressHydrationWarning={true}
-      >
-        <Script id="org-jsonld" type="application/ld+json">
-          {JSON.stringify(getOrganizationSchema())}
-        </Script>
-        <Analytics />
-        <Toaster position="top-center" />
-        <SmoothScroll />
-        <Navigation />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-      </body>
-    </html>
+   <html lang="en">
+  <body
+    className={`${inter.variable} font-inter antialiased bg-green-50 overflow-visible`}
+    suppressHydrationWarning={true}
+  >
+
+   
+    <Analytics />
+    <Toaster position="top-center" />
+
+<SmoothScroll />
+
+    <main>{children}</main>
+
+
+    <Footer />
+  </body>
+</html>
+
   );
 }

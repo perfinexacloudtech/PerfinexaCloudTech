@@ -1,10 +1,13 @@
 import HeroSection from "@/components/home/HeroSection";
-import FeaturesSection from "@/components/home/FeaturesSections";
-import TrendingCourses from "@/components/home/TreandingCourses";
-import NewsletterSection from "@/components/home/NewsletterSection";
 import { getPageMetadata } from "@/lib/Metadata";
 import { getCoursesListSchema } from "@/lib/seo";
 import Script from "next/script";
+import MasterclassSection from "@/components/home/MasterCardSection";
+import FeaturedNews from "@/components/home/FeatureNews";
+import ServicePage from "@/components/home/ServicePage";
+import AnimatedHero from "@/components/home/AnimatedHero";
+import CallAction from "@/components/home/CallAction";
+import RecentProjects from "@/components/home/recentProject";
 
 export const metadata = getPageMetadata({
   title: "Perfinexa CloudTech | Practical Tech Courses in Nagpur",
@@ -15,14 +18,17 @@ export const metadata = getPageMetadata({
 
 export default function Home() {
   return (
-    <>
+    <div className="relative overflow-x-hidden">
       <Script id="courses-list-jsonld" type="application/ld+json">
         {JSON.stringify(getCoursesListSchema())}
       </Script>
       <HeroSection />
-      <FeaturesSection />
-      <TrendingCourses />
-      <NewsletterSection />
-    </>
+      <ServicePage />
+      <AnimatedHero />
+      <RecentProjects />
+      <MasterclassSection />
+      <FeaturedNews />
+      <CallAction />
+    </div>
   );
 }
