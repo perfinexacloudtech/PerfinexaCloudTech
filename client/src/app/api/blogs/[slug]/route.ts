@@ -1,8 +1,11 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/db";
 import Blog from "@/models/blogs";
 
-export async function GET(req: Request, { params }: { params: { slug: string } }) {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ slug: string }> }
+) {
   try {
     await connectDB();
 
@@ -18,7 +21,7 @@ export async function GET(req: Request, { params }: { params: { slug: string } }
 
     return NextResponse.json(blog, { status: 200 });
   } catch (err) {
-    console.error(err);
+    console.error("BLOG API ERROR:", err);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
