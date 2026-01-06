@@ -259,3 +259,160 @@ background-repeat: repeat;
   background-image: radial-gradient(#333 1px, transparent 1px);
   background-size: 24px 24px; /* Space between dots */
 }
+
+
+
+
+.ProseMirror {
+  outline: none;
+  cursor: text;
+  min-height: 100%; /* Makes the writable area fill the container */
+  height: 100%;
+
+}
+
+.ProseMirror h1,
+.ProseMirror h2 {
+  font-weight: 700;
+}
+
+.ProseMirror p {
+  margin: 0.75em 0;
+}
+
+.ProseMirror code {
+  background: #27272a;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* 1. Basic Editor Container */
+.ProseMirror {
+  outline: none !important;
+  min-height: 150px;
+}
+
+/* 2. Headings - Make them big & bold */
+.ProseMirror h1 {
+  font-size: 2.5rem;   /* 40px */
+  font-weight: 800;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+
+.ProseMirror h2 {
+  font-size: 2rem;     /* 32px */
+  font-weight: 700;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.ProseMirror h3 {
+  font-size: 1.5rem;   /* 24px */
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* 3. Lists - Restore Bullets & Numbers */
+.ProseMirror ul {
+  list-style-type: disc !important; /* Forces dots */
+  padding-left: 2rem !important;    /* Indent list */
+  margin: 1rem 0;
+}
+
+.ProseMirror ol {
+  list-style-type: decimal !important; /* Forces numbers */
+  padding-left: 2rem !important;
+  margin: 1rem 0;
+}
+
+.ProseMirror li {
+  margin-bottom: 0.25rem;
+}
+
+/* 4. Blockquotes & Code */
+.ProseMirror blockquote {
+  border-left: 4px solid #6b7280;
+  padding-left: 1rem;
+  font-style: italic;
+  color: #d1d5db;
+}
+
+.ProseMirror pre {
+  background: #27272a;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  color: #fff;
+}
+
+
+
+
+/* ===== BLOG VIEW PAGE STYLES ===== */
+
+.blog-content h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 1.5rem 0 0.75rem;
+  line-height: 1.1;
+}
+
+.blog-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1.25rem 0 0.75rem;
+}
+
+.blog-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+}
+
+.blog-content p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin: 0.75rem 0;
+  color: #d1d5db;
+}
+
+.blog-content ul {
+  list-style: disc;
+  padding-left: 2rem;
+  margin: 1rem 0;
+}
+
+.blog-content ol {
+  list-style: decimal;
+  padding-left: 2rem;
+  margin: 1rem 0;
+}
+
+.blog-content blockquote {
+  border-left: 4px solid #6b7280;
+  padding-left: 1rem;
+  font-style: italic;
+  color: #9ca3af;
+}
+
+.blog-content img {
+  margin: 2rem auto;
+  border-radius: 0.75rem;
+}
+
+
+@media (max-width: 768px) {
+  .blog-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .blog-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .blog-content h3 {
+    font-size: 1.25rem;
+  }
+}

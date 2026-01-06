@@ -18,14 +18,14 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
-            {["About", "Services", "Works","Blogs"].map((item) => (
-              <span
+            {["About", "Services","Blog"].map((item) => (
+              <Link
                 key={item}
-                // href={`/${item.toLowerCase().replace(" ", "-")}`}
+                href={`/${item.toLowerCase().replace(" ", "-")}`}
                 className="text-zinc-400 text-sm font-medium hover:text-white transition-colors"
               >
                 {item}
-              </span>
+              </Link>
             ))}
 
           </div>
@@ -50,10 +50,10 @@ export default function Navbar() {
 
         {isOpen && (
           <div className="md:hidden mt-4  backdrop-blur-2xl border border-white/10 rounded-3xl p-6 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4 duration-300">
-            {["Why Us", "Mission", "Works", "Services", "Pages"].map((item) => (
+            {["About", "Services", "Blog"].map((item) => (
               <Link
                 key={item}
-                href="#"
+                 href={`/${item.toLowerCase().replace(" ", "-")}`}
                 className="text-zinc-300 text-lg font-medium border-b border-white/5 pb-2"
                 onClick={() => setIsOpen(false)}
               >

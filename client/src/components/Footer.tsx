@@ -102,13 +102,13 @@ export default function Footer() {
         </div>
 
         {/* Right Side: Contact Form */}
-        <div ref={formRef} className="bg-[#0f0f0f] border border-gray-800 p-8 rounded-2xl shadow-2xl relative overflow-hidden">
+        <div ref={formRef} className="bg-[#0f0f0f] border border-gray-800 p-4 md:p-8 rounded-2xl shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/10 blur-[80px]"></div>
           
           <h3 className="text-2xl font-bold mb-6">Send us a Message</h3>
           
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
               <div className="space-y-1">
                 <label className="text-[10px] uppercase text-gray-500 font-bold">First Name</label>
                 <input
@@ -185,7 +185,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-gray-900 flex flex-col md:row justify-between items-center gap-4 text-xs text-gray-500">
-        <p>© 2025 Perfinexa CloudTech. All rights reserved.</p>
+        <p>© 2026 Perfinexa CloudTech. All rights reserved.</p>
         <div className="flex gap-6">
           <span>Privacy Policy</span>
           <span>Terms of Service</span>
