@@ -64,7 +64,7 @@ export default function ScrollHighlightHero() {
         </div>
 
         {/* Highlight Text */}
-        <h1 
+        <h2
           ref={textRef}
           className="text-[1.85rem] leading-[1.25] sm:text-4xl md:text-5xl lg:text-7xl font-medium tracking-tight max-w-6xl"
         >
@@ -76,7 +76,7 @@ export default function ScrollHighlightHero() {
               {word}
             </span>
           ))}
-        </h1>
+        </h2>
 
         {/* Glow Effect */}
         <div className="absolute -z-10 w-[300px] h-[300px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none" />

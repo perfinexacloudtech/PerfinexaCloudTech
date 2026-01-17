@@ -82,7 +82,7 @@ export default function Footer() {
 
           <div className="grid grid-cols-2 gap-8">
             <div className="hidden md:block">
-              <h4 className="text-sm font-bold uppercase tracking-widest text-blue-500 mb-4">Quick Links</h4>
+              <p className="text-sm font-bold uppercase tracking-widest text-blue-500 mb-4">Quick Links</p>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li className="hover:text-white cursor-pointer transition-colors">Courses</li>
                 <li className="hover:text-white cursor-pointer transition-colors">About Us</li>
@@ -91,7 +91,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-widest text-blue-500 mb-4">Contact Info</h4>
+              <p className="text-sm font-bold uppercase tracking-widest text-blue-500 mb-4">Contact Info</p>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li>hr@perfinexacloudtech@gmail.com</li>
                 <li>+91 8767134732 </li>
