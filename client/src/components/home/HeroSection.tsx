@@ -1,48 +1,48 @@
 
-// import Navbar from '../common/Navbar'
+import Navbar from '../common/Navbar'
 
-// const HeroSection = () => {
-//   return (
-//    <div className="relative h-svh md:min-h-screen w-full bg-[#030014] overflow-hidden flex flex-col items-center justify-center">
-//     <Navbar />
+const HeroSection = () => {
+  return (
+   <div className="relative h-svh md:min-h-screen w-full bg-[#030014] overflow-hidden flex flex-col items-center justify-center">
+    <Navbar />
       
-//       {/* 1. The Grid Layer */}
-//       <div className="absolute inset-0 z-0 opacity-30" 
-//            style={{ backgroundImage: `linear-gradient(to right, #1f1f1f 1px, transparent 1px), 
-//                                       linear-gradient(to bottom, #1f1f1f 1px, transparent 1px)`,
-//                     backgroundSize: '40px 40px' }}>
-//       </div>
+      {/* 1. The Grid Layer */}
+      <div className="absolute inset-0 z-0 opacity-30" 
+           style={{ backgroundImage: `linear-gradient(to right, #1f1f1f 1px, transparent 1px), 
+                                      linear-gradient(to bottom, #1f1f1f 1px, transparent 1px)`,
+                    backgroundSize: '40px 40px' }}>
+      </div>
 
-//       {/* 2. Top Purple Glow (Radial Blur) */}
-//       <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[400px] 
-//                       bg-blue-600/45 rounded-full blur-[120px] pointer-events-none"></div>
+      {/* 2. Top Purple Glow (Radial Blur) */}
+      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[400px] 
+                      bg-blue-600/45 rounded-full blur-[120px] pointer-events-none"></div>
 
-//       {/* 3. Central Content (The Text) */}
-//       <div className="relative z-10 text-center px-4">
-//         <span className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-gray-400 mb-6 inline-block">
-//            Cloud-first. AI-ready. Future-focused
-//         </span>
-//         <h1 className="text-4xl md:text-7xl font-bold text-white tracking-tight mb-6">
-//        Transforming ideas  <br /> into digital solutions
-//         </h1>
-//         <p className="text-gray-400 text-sm md:text-lg max-w-xl mx-auto mb-10">
-//          Cloud web AI automation and skills to scale businesses.
-//         </p>
+      {/* 3. Central Content (The Text) */}
+      <div className="relative z-10 text-center px-4">
+        <span className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-gray-400 mb-6 inline-block">
+           Cloud-first. AI-ready. Future-focused
+        </span>
+        <h1 className="text-4xl md:text-7xl font-bold text-white tracking-tight mb-6">
+       Transforming ideas  <br /> into digital solutions
+        </h1>
+        <p className="text-gray-400 text-sm md:text-lg max-w-xl mx-auto mb-10">
+         Cloud web AI automation and skills to scale businesses.
+        </p>
         
-//         <div className="flex gap-4 justify-center">
-//           <button className=" px-4 py-2 md:px-8 md:py-3 rounded-full border border-white/20 bg-transparent text-white hover:bg-white/5 transition">
-//             Learn Skills
-//           </button>
-//           <button className=" px-4 py-2 md:px-8 md:py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition">
-//             Consultation
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
+        <div className="flex gap-4 justify-center">
+          <button className=" px-4 py-2 md:px-8 md:py-3 rounded-full border border-white/20 bg-transparent text-white hover:bg-white/5 transition">
+            Learn Skills
+          </button>
+          <button className=" px-4 py-2 md:px-8 md:py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition">
+            Consultation
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
 
-// export default HeroSection
+export default HeroSection
 
 
 // "use client";
@@ -269,153 +269,153 @@
 // }
 
 
-"use client";
+// "use client";
 
-import React from "react";
-import Image from "next/image";
-import { Inter, Playfair_Display } from "next/font/google";
-import { MoveRight } from "lucide-react";
+// import React from "react";
+// import Image from "next/image";
+// import { Inter, Playfair_Display } from "next/font/google";
+// import { MoveRight } from "lucide-react";
 
-// --- FONTS ---
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const playfair = Playfair_Display({ 
-  subsets: ["latin"], 
-  style: ["italic"],
-  variable: "--font-playfair" 
-});
+// // --- FONTS ---
+// const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+// const playfair = Playfair_Display({ 
+//   subsets: ["latin"], 
+//   style: ["italic"],
+//   variable: "--font-playfair" 
+// });
 
-export default function PortfolioPage() {
-  return (
-    <div className={`${inter.variable} ${playfair.variable} min-h-screen w-full bg-white font-sans selection:bg-blue-100 text-slate-900 pb-20`}>
+// export default function PortfolioPage() {
+//   return (
+//     <div className={`${inter.variable} ${playfair.variable} min-h-screen w-full bg-white font-sans selection:bg-blue-100 text-slate-900 pb-20`}>
       
-      {/* ==================== 
-          NAVBAR 
-      ==================== */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6">
-        <div className="flex items-center gap-3 bg-white/80 backdrop-blur-md px-2 py-2 rounded-full border border-slate-100 shadow-sm">
-          {/* Logo Icon */}
-          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-slate-100 text-blue-600 font-bold text-lg">
-            श
-          </div>
+//       {/* ==================== 
+//           NAVBAR 
+//       ==================== */}
+//       <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6">
+//         <div className="flex items-center gap-3 bg-white/80 backdrop-blur-md px-2 py-2 rounded-full border border-slate-100 shadow-sm">
+//           {/* Logo Icon */}
+//           <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-slate-100 text-blue-600 font-bold text-lg">
+//             श
+//           </div>
           
-          {/* Links */}
-          <div className="flex items-center px-2">
-            {["Work", "Know Me", "Resume"].map((item) => (
-              <a 
-                key={item} 
-                href="#" 
-                className="px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
-              >
-                {item}
-              </a>
-            ))}
-          </div>
-        </div>
-      </nav>
+//           {/* Links */}
+//           <div className="flex items-center px-2">
+//             {["Work", "Know Me", "Resume"].map((item) => (
+//               <a 
+//                 key={item} 
+//                 href="#" 
+//                 className="px-4 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
+//               >
+//                 {item}
+//               </a>
+//             ))}
+//           </div>
+//         </div>
+//       </nav>
 
-      {/* ==================== 
-          MAIN CONTENT CONTAINER 
-      ==================== */}
-      {/* This creates the soft gradient background area */}
-      <main className="mt-24 mx-auto max-w-7xl p-4 md:p-8 rounded-[3rem] bg-gradient-to-br from-blue-50 via-purple-50/50 to-blue-50 relative overflow-hidden min-h-[85vh] flex flex-col items-center justify-center">
+//       {/* ==================== 
+//           MAIN CONTENT CONTAINER 
+//       ==================== */}
+//       {/* This creates the soft gradient background area */}
+//       <main className="mt-24 mx-auto max-w-7xl p-4 md:p-8 rounded-[3rem] bg-gradient-to-br from-blue-50 via-purple-50/50 to-blue-50 relative overflow-hidden min-h-[85vh] flex flex-col items-center justify-center">
         
-        {/* Background decorative blurs */}
-        <div className="absolute top-[-20%] left-[20%] w-96 h-96 bg-blue-200/30 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[10%] w-80 h-80 bg-purple-200/30 rounded-full blur-[80px] pointer-events-none" />
+//         {/* Background decorative blurs */}
+//         <div className="absolute top-[-20%] left-[20%] w-96 h-96 bg-blue-200/30 rounded-full blur-[100px] pointer-events-none" />
+//         <div className="absolute bottom-[-10%] right-[10%] w-80 h-80 bg-purple-200/30 rounded-full blur-[80px] pointer-events-none" />
 
-        {/* --- HERO TEXT --- */}
-        <div className="text-center z-10 mb-16 mt-10 max-w-3xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-slate-900 leading-[1.2]">
-            Designing digital experiences that feel <br />
-            <span className={`font-serif italic text-blue-600 ${playfair.className}`}>
-              human & effortless
-            </span>
-          </h1>
-        </div>
+//         {/* --- HERO TEXT --- */}
+//         <div className="text-center z-10 mb-16 mt-10 max-w-3xl">
+//           <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-slate-900 leading-[1.2]">
+//             Designing digital experiences that feel <br />
+//             <span className={`font-serif italic text-blue-600 ${playfair.className}`}>
+//               human & effortless
+//             </span>
+//           </h1>
+//         </div>
 
-        {/* --- BENTO GRID --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl z-10">
+//         {/* --- BENTO GRID --- */}
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-6xl z-10">
           
-          {/* CARD 1: Profile Text */}
-          <div className="bg-white p-6 rounded-3xl shadow-sm border border-white/50 flex flex-col justify-between h-[320px] relative group hover:shadow-md transition-shadow">
-            <div className="absolute top-6 right-6">
-              <span className="bg-slate-100 text-slate-600 text-xs font-medium px-3 py-1.5 rounded-full">
-                Know Me
-              </span>
-            </div>
+//           {/* CARD 1: Profile Text */}
+//           <div className="bg-white p-6 rounded-3xl shadow-sm border border-white/50 flex flex-col justify-between h-[320px] relative group hover:shadow-md transition-shadow">
+//             <div className="absolute top-6 right-6">
+//               <span className="bg-slate-100 text-slate-600 text-xs font-medium px-3 py-1.5 rounded-full">
+//                 Know Me
+//               </span>
+//             </div>
             
-            <div className="mt-auto">
-              <h2 className="text-3xl font-bold text-slate-800">Shantanu</h2>
-              <p className="text-slate-500 font-medium text-lg">Product Designer</p>
-            </div>
+//             <div className="mt-auto">
+//               <h2 className="text-3xl font-bold text-slate-800">Shantanu</h2>
+//               <p className="text-slate-500 font-medium text-lg">Product Designer</p>
+//             </div>
 
-            <div className="mt-6 flex items-center gap-2">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-              </span>
-              <span className="text-xs font-medium text-slate-500">Open to Relocation</span>
-            </div>
-          </div>
+//             <div className="mt-6 flex items-center gap-2">
+//               <span className="relative flex h-3 w-3">
+//                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+//                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+//               </span>
+//               <span className="text-xs font-medium text-slate-500">Open to Relocation</span>
+//             </div>
+//           </div>
 
-          {/* CARD 2: Photo */}
-          <div className="h-[320px] rounded-3xl overflow-hidden relative shadow-sm group">
-            <Image 
-              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&q=80" // Placeholder for Shantanu's photo
-              alt="Shantanu"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-          </div>
+//           {/* CARD 2: Photo */}
+//           <div className="h-[320px] rounded-3xl overflow-hidden relative shadow-sm group">
+//             <Image 
+//               src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&q=80" // Placeholder for Shantanu's photo
+//               alt="Shantanu"
+//               fill
+//               className="object-cover group-hover:scale-105 transition-transform duration-700"
+//             />
+//           </div>
 
-          {/* CARD 3: Experience */}
-          <div className="bg-white p-6 rounded-3xl shadow-sm border border-white/50 flex flex-col h-[320px] hover:shadow-md transition-shadow relative">
-             <div className="absolute top-6 right-6 flex gap-2">
-              <span className="bg-slate-100 text-slate-600 text-xs font-medium px-3 py-1.5 rounded-full">B2C</span>
-              <span className="bg-slate-100 text-slate-600 text-xs font-medium px-3 py-1.5 rounded-full">B2B SaaS</span>
-            </div>
+//           {/* CARD 3: Experience */}
+//           <div className="bg-white p-6 rounded-3xl shadow-sm border border-white/50 flex flex-col h-[320px] hover:shadow-md transition-shadow relative">
+//              <div className="absolute top-6 right-6 flex gap-2">
+//               <span className="bg-slate-100 text-slate-600 text-xs font-medium px-3 py-1.5 rounded-full">B2C</span>
+//               <span className="bg-slate-100 text-slate-600 text-xs font-medium px-3 py-1.5 rounded-full">B2B SaaS</span>
+//             </div>
 
-            <div className="mt-12">
-               <h3 className="text-4xl font-bold text-slate-800">3+</h3>
-               <p className="text-slate-500 font-medium text-lg mt-1">Years of Experience</p>
-            </div>
+//             <div className="mt-12">
+//                <h3 className="text-4xl font-bold text-slate-800">3+</h3>
+//                <p className="text-slate-500 font-medium text-lg mt-1">Years of Experience</p>
+//             </div>
 
-            <div className="mt-auto flex gap-3">
-               {/* Mock Logos */}
-               <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center text-white text-xs font-bold">C</div>
-               <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center text-white text-xs font-bold">S</div>
-               <div className="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white text-xs font-bold">H</div>
-               <div className="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white text-xs font-bold">Q</div>
-            </div>
+//             <div className="mt-auto flex gap-3">
+//                {/* Mock Logos */}
+//                <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center text-white text-xs font-bold">C</div>
+//                <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center text-white text-xs font-bold">S</div>
+//                <div className="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white text-xs font-bold">H</div>
+//                <div className="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white text-xs font-bold">Q</div>
+//             </div>
             
-            <p className="text-xs text-slate-400 font-medium mt-3">Fintech, Healthcare, Insurance</p>
-          </div>
+//             <p className="text-xs text-slate-400 font-medium mt-3">Fintech, Healthcare, Insurance</p>
+//           </div>
 
-          {/* CARD 4: Recent Work */}
-          <div className="bg-white p-6 rounded-3xl shadow-sm border border-white/50 flex flex-col h-[320px] hover:shadow-md transition-shadow relative">
-             <div className="absolute top-6 right-6">
-              <span className="bg-slate-100 text-slate-600 text-xs font-medium px-3 py-1.5 rounded-full">Agentic AI</span>
-            </div>
+//           {/* CARD 4: Recent Work */}
+//           <div className="bg-white p-6 rounded-3xl shadow-sm border border-white/50 flex flex-col h-[320px] hover:shadow-md transition-shadow relative">
+//              <div className="absolute top-6 right-6">
+//               <span className="bg-slate-100 text-slate-600 text-xs font-medium px-3 py-1.5 rounded-full">Agentic AI</span>
+//             </div>
 
-            <div className="mt-12">
-               <h3 className="text-3xl font-bold text-slate-800">Recent</h3>
-               <p className="text-slate-500 font-medium text-lg leading-tight mt-1">Building AI <br/> Experiences</p>
-            </div>
+//             <div className="mt-12">
+//                <h3 className="text-3xl font-bold text-slate-800">Recent</h3>
+//                <p className="text-slate-500 font-medium text-lg leading-tight mt-1">Building AI <br/> Experiences</p>
+//             </div>
 
-            <div className="mt-auto flex gap-3">
-               {/* Mock Logos */}
-               <div className="w-8 h-8 rounded bg-red-400 flex items-center justify-center text-white text-[10px]">co+</div>
-               <div className="w-8 h-8 rounded bg-blue-400 flex items-center justify-center text-white">
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-               </div>
-               <div className="w-8 h-8 rounded bg-cyan-500 flex items-center justify-center text-white text-[10px]">alexa</div>
-            </div>
+//             <div className="mt-auto flex gap-3">
+//                {/* Mock Logos */}
+//                <div className="w-8 h-8 rounded bg-red-400 flex items-center justify-center text-white text-[10px]">co+</div>
+//                <div className="w-8 h-8 rounded bg-blue-400 flex items-center justify-center text-white">
+//                   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+//                </div>
+//                <div className="w-8 h-8 rounded bg-cyan-500 flex items-center justify-center text-white text-[10px]">alexa</div>
+//             </div>
 
-             <p className="text-xs text-slate-400 font-medium mt-3">Conversational Copilots</p>
-          </div>
+//              <p className="text-xs text-slate-400 font-medium mt-3">Conversational Copilots</p>
+//           </div>
 
-        </div>
-      </main>
-    </div>
-  );
-}
+//         </div>
+//       </main>
+//     </div>
+//   );
+// }
