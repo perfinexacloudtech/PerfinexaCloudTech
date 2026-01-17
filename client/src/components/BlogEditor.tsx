@@ -36,6 +36,8 @@ const BLOG_CATEGORIES = [
   "Large Language Models (LLM)",
   "AI Engineering",
   "Web Development",
+  "Backend Development",
+  "Digital Marketing",
   "etc",
 ];
 

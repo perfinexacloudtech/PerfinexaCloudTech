@@ -1,5 +1,15 @@
 import Navbar from "@/components/common/Navbar";
+import { getPageMetadata } from "@/lib/Metadata";
 import Image from "next/image"; // Assuming you are using Next.js Image component
+
+
+export const metadata = getPageMetadata({
+  title: "Perfinexa CloudTech Pvt. Ltd – IT Company in Nagpur",
+  description:
+    "Looking for reliable IT services in Nagpur. Perfinexa Cloud Tech is a offering web development, software solutions, SEO  to grow your business.",
+  path: "/",
+});
+
 
 const Page = () => {
   return (
@@ -57,15 +67,11 @@ const Page = () => {
             </div>
             <div className="flex flex-col justify-center">
               <span className="text-blue-600 font-semibold mb-2">01</span>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Go Digital. Grow Local Brands
-              </h3>
+              </h2>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                We help local businesses transition from offline to digital with
-                powerful websites, smart systems, and automation. From
-                Google-optimized websites to WhatsApp ordering and lead
-                management, we build digital solutions that increase visibility,
-                trust, and customer conversions.
+               We help local businesses transition from offline to digital with powerful websites, smart systems, and automation. As a trusted IT company in Nagpur, we deliver reliable IT services in Nagpur, including Google-optimized websites, WhatsApp ordering, and lead management solutions that boost visibility, build trust, and increase customer conversions.
               </p>
               <a
                 href="#"
@@ -83,15 +89,11 @@ const Page = () => {
                 We keep DOM order Text -> Image for desktop left-to-right flow. */}
             <div className="flex flex-col justify-center order-2 md:order-1">
               <span className="text-blue-600 font-semibold mb-2">02</span>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 We Care About Your Online Visibility
-              </h3>
+              </h2>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                At Perfinexa Cloud Tech, your business growth is our priority.
-                We focus on brand presence, Google ranking, and user experience
-                to ensure your business stands out online. Every strategy we
-                design is aligned with real business goals—more leads, more
-                customers, and long-term growth.
+            Perfinexa Cloud Tech is a results-driven IT company in Nagpur offering expert IT services in Nagpur, including SEO, website development, digital marketing, and automation. We help businesses improve Google rankings, boost online visibility, and generate quality leads for long-term growth.
               </p>
               <a
                 href="#"
@@ -118,14 +120,10 @@ const Page = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-blue-800 mb-6">
-              Empowering Local Businesses to Go Digital
+              Digital IT Solutions in Nagpur
             </h2>
             <p className="text-gray-500 leading-relaxed">
-              Perfinexa Cloud Tech is a team of developers, designers, and
-              digital experts helping local businesses grow online through
-              professional websites, SEO, and smart automation. We work closely
-              with business owners to build simple digital solutions that
-              increase visibility, save time, and bring more customers.
+            Perfinexa Cloud Tech is a trusted IT company in Nagpur offering website development in Nagpur, SEO services, and digital marketing solutions to help local businesses grow online. We create smart, simple digital systems that boost visibility, save time, and attract more customers.
             </p>
           </div>
 
@@ -245,7 +243,7 @@ const Page = () => {
               />
             </div>
             <h3 className="font-bold text-white text-lg">Praful Puri</h3>
-            <p className="text-gray-500 text-sm mb-3">Python Developer</p>
+            <p className="text-gray-500 text-sm mb-3"> Digital Marketing Executive</p>
             <div className="flex gap-3">
               <SocialIcon type="instagram" />
               <SocialIcon type="twitter" />

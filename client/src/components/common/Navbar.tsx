@@ -7,6 +7,14 @@ import {  ArrowUpRight, Menu, X } from "lucide-react";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+
+  const menuNav = [
+  { title: "About", path: "/it-company-in-nagpur" },
+  { title: "Services", path: "/services" },
+  { title: "Blog", path: "/blog" },
+];
+
+
   return (
     <nav className="fixed top-6 left-0 right-0 z-[100] px-6">
       <div className=" max-w-2xl md:max-w-5xl mx-auto">
@@ -18,13 +26,13 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
-            {["About", "Services","Blog"].map((item) => (
+            {menuNav.map((item) => (
               <Link
-                key={item}
-                href={`/${item.toLowerCase().replace(" ", "-")}`}
+                key={item.title}
+                href={item.path}
                 className="text-zinc-400 text-sm font-medium hover:text-white transition-colors"
               >
-                {item}
+                {item.title}
               </Link>
             ))}
 

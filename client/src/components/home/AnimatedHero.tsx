@@ -35,7 +35,7 @@ export default function ScrollHighlightHero() {
     });
   }, { scope: sectionRef });
 
-  const text = "We help businesses unlock growth with web, apps, AI, and Salesforce. As a new startup, we turn bold ideas into intelligent, scalable digital solutions that work.";
+  const text = "We help businesses unlock growth with web, apps, AI, and Salesforce. As a Nagpur-based IT company, we turn bold ideas into intelligent, scalable digital solutions that work.";
 
   return (
     <main className="bg-black text-white selection:bg-purple-500/30">

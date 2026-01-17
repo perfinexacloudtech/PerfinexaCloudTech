@@ -307,9 +307,9 @@ function FeaturesSection() {
           <span className="inline-block px-3 py-1 rounded-full bg-[#070F3A]/10 text-[#070F3A] text-xs font-bold tracking-wider mb-2 md:mb-6 uppercase">
             {activeContent.badge}
           </span>
-          <h3 className="text-2xl md:text-4xl font-medium mb-2 md:mb-6 text-slate-900">
+          <h2 className="text-2xl md:text-4xl font-medium mb-2 md:mb-6 text-slate-900">
             {activeContent.title}
-          </h3>
+          </h2>
           <p className=" text-sm md:text-lg text-slate-600 leading-relaxed mb-8 text-justify">
             {activeContent.desc}
           </p>

@@ -9,7 +9,7 @@ import CallAction from "@/components/home/CallAction";
 import RecentProjects from "@/components/home/recentProject";
 
 export const metadata = getPageMetadata({
-  title: "Perfinexa CloudTech – IT Company in Nagpur",
+  title: "Perfinexa CloudTech Pvt. Ltd – IT Company in Nagpur",
   description:
     "Leading IT company in Nagpur offering digital marketing, website development, software development, Salesforce solutions, app development in Nagpur.",
   path: "/",
@@ -22,7 +22,7 @@ export default function Home() {
       <ServicePage />
       <AnimatedHero />
       <RecentProjects />
-      <MasterclassSection />
+      {/* <MasterclassSection /> */}
       <FeaturedNews />
       <CallAction />
     </div>

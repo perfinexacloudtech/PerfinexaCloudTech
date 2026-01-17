@@ -74,9 +74,7 @@ export default function Footer() {
               PERFINEXA CLOUDTECH PVT LTD
             </h2>
             <p className="text-gray-400 mt-4 max-w-md leading-relaxed">
-              Empowering the next generation of developers with industry-grade 
-              training and mentorship. Innovation meets success through our 
-              comprehensive learning programs.
+             Perfinexa Cloud Tech is an IT company in Nagpur offering practical IT training and internships in Nagpur to help students gain real-world skills and start successful tech careers.
             </p>
           </div>
 
@@ -84,7 +82,7 @@ export default function Footer() {
             <div className="hidden md:block">
               <p className="text-sm font-bold uppercase tracking-widest text-blue-500 mb-4">Quick Links</p>
               <ul className="space-y-2 text-gray-400 text-sm">
-                <li className="hover:text-white cursor-pointer transition-colors">Courses</li>
+               
                 <li className="hover:text-white cursor-pointer transition-colors">About Us</li>
                 <li className="hover:text-white cursor-pointer transition-colors">Success Stories</li>
                 <li className="hover:text-white cursor-pointer transition-colors">Contact</li>
