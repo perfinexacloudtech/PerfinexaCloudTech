@@ -204,7 +204,7 @@ export default function ConsultationDrawer({ isOpen, onClose }: DrawerProps) {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full  border border-gray-800 rounded-sm md:rounded-xl p-2 md:p-4 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-gray-600"
+                  className="w-full  border border-gray-800 rounded-sm md:rounded-xl p-2 md:p-4  focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-gray-600"
                   placeholder="Project Inquiry..."
                 />
               </div>
