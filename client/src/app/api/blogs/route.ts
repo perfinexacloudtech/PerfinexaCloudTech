@@ -5,7 +5,7 @@ import slugify from "slugify"
 
 export async function POST(req: Request) {
   try {
-    const { title, content, authorName, blogCategory } = await req.json()
+    const { title, content, authorName, blogCategory,thumbnailUrl } = await req.json()
 
     if (!title || !content || !authorName || !blogCategory) {
       return NextResponse.json(
@@ -23,7 +23,6 @@ export async function POST(req: Request) {
       strict: true
     })
 
-    // ensure unique slug
     let count = 1
     while (await Blog.findOne({ slug })) {
       slug = `${slugify(cleanTitle, { lower: true, strict: true })}-${count}`
@@ -35,7 +34,8 @@ export async function POST(req: Request) {
       slug,
       content,
       authorName,
-      blogCategory
+      blogCategory,
+      thumbnailUrl,
     })
 
     return NextResponse.json({ blog }, { status: 201 })
@@ -62,19 +62,16 @@ export async function GET(req: Request) {
 
     let query = Blog.find({});
 
-    // 🔥 TRENDING LOGIC
     if (trending === "true") {
-      query = query.sort({ views: -1, createdAt: -1 });
+      query = query.sort({ views: 1, createdAt: 1 });
     } else {
-      query = query.sort({ createdAt: -1 });
+      query = query.sort({ createdAt: 1 });
     }
 
-    // 🏷️ CATEGORY FILTER
     if (category) {
       query = query.where("blogCategory").equals(category);
     }
 
-    // 🔢 LIMIT
     if (limitParam) {
       const limit = Number(limitParam);
       if (!isNaN(limit)) {

@@ -1,4 +1,4 @@
-import mongoose, { Schema, models, model } from 'mongoose'
+import mongoose, { Schema, models, model } from "mongoose";
 
 const BlogSchema = new Schema(
   {
@@ -7,9 +7,14 @@ const BlogSchema = new Schema(
     content: { type: String, required: true },
     authorName: { type: String, required: true },
     blogCategory: { type: String, required: true },
-    views: { type: Number, default: 0 }
+    views: { type: Number, default: 0 },
+    thumbnailUrl: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
-)
+);
 
-export default models.Blog || model('Blog', BlogSchema)
+
+export default models.Blog || model("Blog", BlogSchema);

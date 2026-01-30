@@ -1,4 +1,3 @@
-// src/app/utils/animations.ts
 export const fadeInUp = {
   initial: { opacity: 0, y: 40 },
   animate: { opacity: 1, y: 0 },

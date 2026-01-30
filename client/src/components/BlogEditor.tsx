@@ -47,6 +47,7 @@ const BlogEditor = () => {
   const [isPublishing, setIsPublishing] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
   const [blogCategory, setblogCategory] = useState(BLOG_CATEGORIES[0]);
+  const [thumbnailUrl, setThumbnailUrl] = useState("");
 
   const editor = useEditor({
     extensions: [
@@ -80,6 +81,7 @@ const BlogEditor = () => {
           content: editor.getHTML(),
           authorName,
           blogCategory,
+           thumbnailUrl, 
         }),
       });
 
@@ -104,7 +106,7 @@ const BlogEditor = () => {
   if (!editor) return null;
 
   return (
-    <div className="min-h-screen bg-black text-white p-6">
+    <div className="min-h-screen pt-26 bg-black text-white p-6">
       <input
         value={title}
         onChange={(e) => setTitle(e.target.value)}
@@ -112,39 +114,54 @@ const BlogEditor = () => {
         className="w-full bg-transparent text-4xl font-bold border-b border-zinc-700 pb-2 mb-4 focus:outline-none"
       />
 
-      {/* AUTHOR SELECT */}
       <div className="flex items-center gap-4 mb-4">
         <div className="mb-4 flex items-center gap-2">
-        <span className="text-sm text-zinc-400">Author:</span>
-        <select
-          value={authorName}
-          onChange={(e) => setAuthorName(e.target.value)}
-          className="bg-zinc-800 border border-zinc-700 text-sm rounded px-3 py-1"
-        >
-          {AUTHORS.map((a) => (
-            <option key={a}>{a}</option>
-          ))}
-        </select>
-      </div>
+          <span className="text-sm text-zinc-400">Author:</span>
+          <select
+            value={authorName}
+            onChange={(e) => setAuthorName(e.target.value)}
+            className="bg-zinc-800 border border-zinc-700 text-sm rounded px-3 py-1"
+          >
+            {AUTHORS.map((a) => (
+              <option key={a}>{a}</option>
+            ))}
+          </select>
+        </div>
 
-      <div className="mb-4 flex items-center gap-2">
+        <div className="mb-4 flex items-center gap-2">
           <span className="text-sm text-zinc-400">Category :</span>
-         <select
+          <select
+            className="bg-zinc-800 border border-zinc-700 text-sm rounded px-3 py-1"
+            value={blogCategory}
+            onChange={(e) => setblogCategory(e.target.value)}
+          >
+            {BLOG_CATEGORIES.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <label
+            htmlFor="thumbnailUrl"
+            className="text-sm  "
+          >
+            Thumbnail Image URL :
+          </label>
+
+          <input
+            id="thumbnailUrl"
+            type="url"
+            placeholder="https://example.com/image.jpg"
+            value={thumbnailUrl}
+            onChange={(e) => setThumbnailUrl(e.target.value)}
            className="bg-zinc-800 border border-zinc-700 text-sm rounded px-3 py-1"
-        value={blogCategory}
-        onChange={(e) => setblogCategory(e.target.value)}
-      >
-        {BLOG_CATEGORIES.map((cat) => (
-          <option key={cat} value={cat}>
-            {cat}
-          </option>
-        ))}
-      </select>
+            required
+          />
+        </div>
       </div>
-
-      </div>
-
-     
 
       {successMsg && (
         <div className="mb-3 text-green-400 text-sm">{successMsg}</div>
@@ -166,8 +183,6 @@ const BlogEditor = () => {
     </div>
   );
 };
-
-/* ================= MENU BAR ================= */
 
 const MenuBar = ({
   editor,

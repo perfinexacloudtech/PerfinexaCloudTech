@@ -57,7 +57,6 @@ export function getBlogSchema(blog: any) {
 
     articleSection: blog.blogCategory,
 
-    // Optional but safe
     isAccessibleForFree: true,
   };
 }

@@ -1,194 +1,194 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import gsap from "gsap";
-import { toast, Toaster } from "react-hot-toast";
+import { ArrowUpRight, Loader2, X } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { FaLinkedin } from "react-icons/fa";
+import axios from "axios";
 
-export default function Footer() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const formRef = useRef(null);
+const Footer = () => {
+  const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const nevLink = [
+    {
+      name:"About Us",
+      path:"/about"        
+    },
+    {
+      name:"Service",
+      path:"#services"
+    },
+    {
+      name:"Blogs",
+      path:"/blog"
+    }
+  ]
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    const servicesLink = [
+    {
+      name:"Software Developement",
+      path:"/services/software-development-services/"        
+    },
+    {
+      name:"Moblie Apps",
+      path:"/services/mobile-app-development-services/"
+    },
+    {
+      name:"Web Developement",
+      path:"/services/website-development-services/"
+    },
+      {
+      name:"AI Solution",
+      path:"#"
+    }
+  ]
+
+
+  const handleSubscribe = async () => {
+    if (!email || !email.includes("@")) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
     setIsSubmitting(true);
 
-    gsap.to(".submit-btn", { scale: 0.95, duration: 0.1, yoyo: true, repeat: 1 });
-
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/send-offer`, {
+        email,
       });
 
-      const data = await response.json();
-      
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message');
-      }
-
-      toast.success('Message sent successfully!');
-
-      gsap.fromTo(formRef.current, { opacity: 0.5 }, { opacity: 1, duration: 0.5 });
-
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
+      toast.success("Successfully subscribed to newsletter!");
+      setEmail("");
     } catch (error: any) {
-      toast.error(error.message || 'Something went wrong');
+      console.error(error);
+      const errorMessage =
+        error.response?.data?.error ||
+        "Something went wrong. Please try again.";
+      toast.error(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <footer className="bg-[#050505] text-white pt-20 pb-10 px-6 border-t border-gray-900" id="contact-section">
-      <Toaster position="top-right" />
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
-        
-
-        <div className="space-y-8">
-          <div>
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
-              PERFINEXA CLOUDTECH PVT LTD
-            </h2>
-            <p className="text-gray-400 mt-4 max-w-md leading-relaxed">
-             Perfinexa Cloud Tech is an IT company in Nagpur offering practical IT training and internships in Nagpur to help students gain real-world skills and start successful tech careers.
+    <footer className=" bg-[#0F172A] text-white pt-10 md:pt-16 pb-6 md:pb-10 px-6 md:px-12 lg:px-24">
+      <div className="max-w-7xl mx-auto">
+        {/* Top Row: Logo & Join Button */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:gap-8 md:mb-16 border-b border-white/20 pb-6 md:pb-12">
+          <div className="flex items-center gap-3 ">
+            <div>
+              <Image
+                src="/perfinexacloudtech.png"
+                alt="Perfinexa Logo"
+                width={150}
+                height={150}
+              />
+            </div>
+            <div className="h-12 w-[1px] bg-white/30 mx-4 hidden md:block"></div>
+            <p className="max-w-sm text-sm  hidden md:block">
+             Scalable Cloud & Software Solutions for Business Growth.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8">
-            <div className="hidden md:block">
-              <p className="text-sm font-bold uppercase tracking-widest text-blue-500 mb-4">Quick Links</p>
-              <ul className="space-y-2 text-gray-400 text-sm">
-               
-                <li className="hover:text-white cursor-pointer transition-colors">About Us</li>
-                <li className="hover:text-white cursor-pointer transition-colors">Success Stories</li>
-                <li className="hover:text-white cursor-pointer transition-colors">Contact</li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-sm font-bold uppercase tracking-widest text-blue-500 mb-4">Contact Info</p>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li>hr@perfinexacloudtech@gmail.com</li>
-                <li>+91 8767134732 </li>
-                <li>Nagpur, Maharashtra, India</li>
-              </ul>
-            </div>
-          </div>
+          <button className="bg-[#1e40af] hidden md:flex text-white hover:bg-blue-400  font-bold py-3 px-6 rounded-sm uppercase text-sm  items-center gap-2 transition-colors">
+            Want To Join Us <ArrowUpRight size={16} />
+          </button>
         </div>
 
-        {/* Right Side: Contact Form */}
-        <div ref={formRef} className="bg-[#0f0f0f] border border-gray-800 p-4 md:p-8 rounded-2xl shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/10 blur-[80px]"></div>
-          
-          <h3 className="text-2xl font-bold mb-6">Send us a Message</h3>
-          
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
-              <div className="space-y-1">
-                <label className="text-[10px] uppercase text-gray-500 font-bold">First Name</label>
-                <input
-                  required
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  className="w-full bg-[#161616] border border-gray-800 rounded-lg p-3 focus:border-blue-500 outline-none transition-all"
-                  placeholder="John"
-                />
-              </div>
-              <div className="space-y-1">
-                <label className="text-[10px] uppercase text-gray-500 font-bold">Last Name</label>
-                <input
-                  required
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  className="w-full bg-[#161616] border border-gray-800 rounded-lg p-3 focus:border-blue-500 outline-none transition-all"
-                  placeholder="Doe"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-1">
-              <label className="text-[10px] uppercase text-gray-500 font-bold">Email Address</label>
-              <input
-                required
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full bg-[#161616] border border-gray-800 rounded-lg p-3 focus:border-blue-500 outline-none transition-all"
-                placeholder="john@example.com"
-              />
-            </div>
-
-            <div className="space-y-1">
-              <label className="text-[10px] uppercase text-gray-500 font-bold">Subject</label>
-              <input
-                required
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className="w-full bg-[#161616] border border-gray-800 rounded-lg p-3 focus:border-blue-500 outline-none transition-all"
-                placeholder="How can we help?"
-              />
-            </div>
-
-            <div className="space-y-1">
-              <label className="text-[10px] uppercase text-gray-500 font-bold">Message</label>
-              <textarea
-                required
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={4}
-                className=" resize-none w-full bg-[#161616] border border-gray-800 rounded-lg p-3 focus:border-blue-500 outline-none transition-all"
-                placeholder="Write your message here..."
-              ></textarea>
-            </div>
-
-            <button
-              disabled={isSubmitting}
-              type="submit"
-              className="submit-btn w-full bg-blue-600 hover:bg-blue-500 disabled:bg-gray-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-blue-900/20 flex items-center justify-center gap-2"
+        {/* Bottom Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4  gap-6 md:gap-12">
+          {/* Newsletter */}
+          <div className="lg:col-span-1">
+            <h4 className="font-bold  text-sm md:text-lg mb-4">
+             Enter your email to receive information about our services.
+            </h4>
+            <form
+              className="mt-6"
+              onSubmit={(e) => {
+                e.preventDefault(); // Prevents page reload
+                handleSubscribe(); // Calls your Axios logic
+              }}
             >
-              {isSubmitting ? (
-                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-              ) : "SEND MESSAGE"}
-            </button>
-          </form>
-        </div>
-      </div>
+              <input
+                type="email"
+                placeholder="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isSubmitting}
+                required // This will now stop submission if empty
+                className="w-full bg-transparent border py-2 mb-6 pl-2 rounded-md placeholder-blue-200 text-white focus:outline-none focus:border-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              />
 
-      <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-gray-900 flex flex-col md:row justify-between items-center gap-4 text-xs text-gray-500">
-        <p>© 2026 Perfinexa CloudTech. All rights reserved.</p>
-        <div className="flex gap-6">
-          <span>Privacy Policy</span>
-          <span>Terms of Service</span>
+              <button
+                type="submit" // Changed from onClick to type="submit"
+                disabled={isSubmitting}
+                className="bg-[#1e40af] hover:bg-blue-700 text-white font-bold py-2 px-4 md:py-3 md:px-8 rounded-sm uppercase text-sm flex items-center gap-2 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? (
+                  <>
+                    Sending <Loader2 size={16} className="animate-spin" />
+                  </>
+                ) : (
+                  <>
+                    Send Now <ArrowUpRight size={16} />
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+
+          {/* Useful Links */}
+          <div>
+            <h4 className="font-bold text-lg mb-6">Useful Links</h4>
+            <ul className=" space-y-2 md:space-y-4  text-sm">
+              {nevLink.map((link) => (
+                <li key={link.name}>
+                  <a href={link.path} className="hover:text-white transition-colors">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h4 className="font-bold text-lg mb-6">Services</h4>
+            <ul className="space-y-2 md:space-y-4  text-sm">
+              {servicesLink.map((link) => (
+                <li key={link.name}>
+                  <a href={link.path} className="hover:text-white transition-colors">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Address */}
+          <div>
+            <h4 className="font-bold text-lg mb-6">Address</h4>
+            <ul className="space-y-4  text-sm">
+              <li className="flex gap-2">IN: +91 8767134732</li>
+              <li className="mt-4">
+                12,1st floor A-Wing, Mangalwari Complex, Sadar-Nagpur
+              </li>
+              <li className="flex gap-4 mt-6">
+                <FaLinkedin
+                  size={20}
+                  className="cursor-pointer hover:text-white"
+                  href="https://www.linkedin.com/company/perfinexacloudtech/posts/?feedView=all"
+                />
+              </li>
+              <li className="mt-6 text-xs ">©2026 All Rights Reserved</li>
+            </ul>
+          </div>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

@@ -45,12 +45,6 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
 
 body,html{
   scroll-behavior: smooth;
@@ -139,12 +133,11 @@ body,html{
 html, body {
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: #0000;
+ 
 }
 .news-card
 {
 background-color: #f8f8f8;
-/* opacity: 0.2; */
 background-image:  linear-gradient(135deg, #212adc 25%, transparent 25%), linear-gradient(225deg, #212adc 25%, transparent 25%), linear-gradient(45deg, #212adc 25%, transparent 25%), linear-gradient(315deg, #212adc 25%, #f8f8f8 25%);
 background-position:  32px 0, 32px 0, 0 0, 0 0;
 background-size: 64px 64px;
@@ -153,27 +146,22 @@ background-repeat: repeat;
 
 
 
-/* The dark background container */
 .bg-container {
   background-color: #030014;
   position: relative;
   overflow: hidden;
 }
 
-/* The Grid Pattern */
 .bg-grid {
   position: absolute;
   inset: 0;
-  /* Creates 1px lines every 40px */
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 40px 40px;
-  /* Optional: mask the grid so it fades out at the edges */
   mask-image: radial-gradient(circle at center, black, transparent 80%);
 }
 
-/* The Glowing Blur Box */
 .blur-box {
   position: absolute;
   top: -100px;
@@ -187,7 +175,6 @@ background-repeat: repeat;
   pointer-events: none;
 }
 
-/* Background & Grid */
 .bg-etery {
   background-color: #030014;
   background-image: 
@@ -196,7 +183,6 @@ background-repeat: repeat;
   background-size: 50px 50px;
 }
 
-/* The Blue/Purple Blur Box */
 .glow-box {
   position: absolute;
   top: 0;
@@ -210,7 +196,6 @@ background-repeat: repeat;
   z-index: 0;
 }
 
-/* Hide Scrollbar for the horizontal container */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -221,18 +206,16 @@ background-repeat: repeat;
 
 
 @layer components {
-  /* Card with only top border and subtle blur */
   .etery-card {
-    @apply bg-white/[0.03] backdrop-blur-md rounded-3xl p-8 md:p-10 
+    @apply bg-white/3 backdrop-blur-md rounded-3xl p-8 md:p-10 
            border-t border-white/20 border-x-0 border-b-0;
     transition: background 0.3s ease;
   }
 
   .etery-card:hover {
-    @apply bg-white/[0.06];
+    @apply bg-white/6;
   }
 
-  /* Black shades for left and right edges */
   .side-shades::before,
   .side-shades::after {
     content: "";
@@ -257,7 +240,7 @@ background-repeat: repeat;
 
 .bg-dotted {
   background-image: radial-gradient(#333 1px, transparent 1px);
-  background-size: 24px 24px; /* Space between dots */
+  background-size: 24px 24px; 
 }
 
 
@@ -266,7 +249,7 @@ background-repeat: repeat;
 .ProseMirror {
   outline: none;
   cursor: text;
-  min-height: 100%; /* Makes the writable area fill the container */
+  min-height: 100%; 
   height: 100%;
 
 }
@@ -286,15 +269,13 @@ background-repeat: repeat;
   border-radius: 4px;
 }
 
-/* 1. Basic Editor Container */
 .ProseMirror {
   outline: none !important;
   min-height: 150px;
 }
 
-/* 2. Headings - Make them big & bold */
 .ProseMirror h1 {
-  font-size: 2.5rem;   /* 40px */
+  font-size: 2.5rem;   
   font-weight: 800;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
@@ -302,28 +283,27 @@ background-repeat: repeat;
 }
 
 .ProseMirror h2 {
-  font-size: 2rem;     /* 32px */
+  font-size: 2rem;     
   font-weight: 700;
   margin-top: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
 .ProseMirror h3 {
-  font-size: 1.5rem;   /* 24px */
+  font-size: 1.5rem;  
   font-weight: 600;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
-/* 3. Lists - Restore Bullets & Numbers */
 .ProseMirror ul {
-  list-style-type: disc !important; /* Forces dots */
-  padding-left: 2rem !important;    /* Indent list */
+  list-style-type: disc !important; 
+  padding-left: 2rem !important;    
   margin: 1rem 0;
 }
 
 .ProseMirror ol {
-  list-style-type: decimal !important; /* Forces numbers */
+  list-style-type: decimal !important; 
   padding-left: 2rem !important;
   margin: 1rem 0;
 }
@@ -332,7 +312,6 @@ background-repeat: repeat;
   margin-bottom: 0.25rem;
 }
 
-/* 4. Blockquotes & Code */
 .ProseMirror blockquote {
   border-left: 4px solid #6b7280;
   padding-left: 1rem;
@@ -350,7 +329,6 @@ background-repeat: repeat;
 
 
 
-/* ===== BLOG VIEW PAGE STYLES ===== */
 
 .blog-content h1 {
   font-size: 2.5rem;
@@ -375,7 +353,7 @@ background-repeat: repeat;
   font-size: 1.05rem;
   line-height: 1.75;
   margin: 0.75rem 0;
-  color: #d1d5db;
+  color: #38393a;
 }
 
 .blog-content ul {
@@ -388,6 +366,11 @@ background-repeat: repeat;
   list-style: decimal;
   padding-left: 2rem;
   margin: 1rem 0;
+}
+
+.blog-content a{
+  color: blue;
+  text-decoration: underline;
 }
 
 .blog-content blockquote {
@@ -416,3 +399,45 @@ background-repeat: repeat;
     font-size: 1.25rem;
   }
 }
+
+
+
+@keyframes shine-move {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.text-shine-effect {
+  background: linear-gradient(
+    to right, 
+    #4b5563 20%, 
+    #9ca3af 40%, 
+    #9ca3af 60%, 
+    #4b5563 80%
+  );
+  background-size: 200% auto;
+  
+  background-clip: text;
+  -webkit-background-clip: text;
+  
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  
+  animation: shine-move 3s linear infinite;
+}
+
+
+@keyframes domain-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-domain-scroll {
+  animation: domain-scroll 15s linear infinite;
+  will-change: transform;
+}
+

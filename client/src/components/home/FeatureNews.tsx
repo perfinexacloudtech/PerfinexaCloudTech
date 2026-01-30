@@ -1,27 +1,23 @@
+import connectDB from "@/lib/db";
+import Blog from "@/models/blogs";
 import TrandingBlogCard from "../common/TrandingBlogCard";
 
-async function getBlogs() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
-
-  try {
-    const res = await fetch(`${apiUrl}/api/blogs?trending=true&limit=5`, {
-      cache: "no-store", // Ensures fresh data on every load
-    });
-
-    if (!res.ok) {
-      console.error("Failed to fetch blogs:", res.statusText);
-      return { data: [] };
-    }
-
-    return res.json();
-  } catch (error) {
-    console.error("Error connecting to API:", error);
-    return { data: [] };
-  }
-}
+export const revalidate = 300;
 
 export default async function FeaturedNews() {
-   const { data: blogs } = await getBlogs()
+  await connectDB();
 
-  return <TrandingBlogCard trandingBlog={blogs} />;
+  const blogs = await Blog.find({})
+    .select("title slug content authorName createdAt thumbnail")
+    .sort({ createdAt: -1 })
+    .limit(5)
+    .lean();
+
+  const serializedBlogs = blogs.map(blog => ({
+    ...blog,
+    _id: blog._id.toString(),
+    createdAt: blog.createdAt?.toISOString(),
+  }));
+
+  return <TrandingBlogCard trandingBlog={serializedBlogs} />;
 }

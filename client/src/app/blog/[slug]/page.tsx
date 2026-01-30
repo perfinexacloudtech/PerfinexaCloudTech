@@ -3,6 +3,7 @@ import Blog from "@/models/blogs";
 import BlogLayout from "@/components/common/BlogLayout";
 import ViewTracker from "@/components/common/ViewTracker";
 import { notFound } from "next/navigation";
+import { getBlogSchema } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -15,22 +16,27 @@ export default async function BlogPage({ params }: Props) {
 
   await connectDB();
 
-const blog = await Blog.findOne({ slug }).lean();
+  const blog = await Blog.findOne({ slug }).lean();
+  if (!blog) return notFound();
 
-if (!blog) return notFound();
-
-const serializedBlog = {
-  ...blog,
-  _id: blog._id.toString(),
-  createdAt: blog.createdAt?.toISOString(),
-  updatedAt: blog.updatedAt?.toISOString(),
-};
-
+  const serializedBlog = {
+    ...blog,
+    _id: blog._id.toString(),
+    createdAt: blog.createdAt?.toISOString(),
+    updatedAt: blog.updatedAt?.toISOString(),
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getBlogSchema(serializedBlog)),
+        }}
+      />
+
       <ViewTracker slug={blog.slug} />
-      <BlogLayout data={blog} />
+      <BlogLayout data={serializedBlog} />
     </>
   );
 }

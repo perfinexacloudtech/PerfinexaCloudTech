@@ -1,15 +1,16 @@
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
-import SmoothScroll from "@/components/common/SmoothScroll";
 import { Analytics } from "@vercel/analytics/next";
 import { getPageMetadata } from "@/lib/Metadata";
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from "@next/third-parties/google";
+import Navbar from "@/components/common/Navbar";
 
-const inter = Inter({
+const roboto = Roboto({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-roboto",
 });
 
 export const metadata = getPageMetadata({
@@ -27,16 +28,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} font-inter antialiased bg-green-50 overflow-visible`}
+        className={`${roboto.variable} font-roboto antialiased bg-white overflow-visible`}
         suppressHydrationWarning={true}
       >
-         <GoogleAnalytics gaId="G-ZM11PQYS6D" />
+        <GoogleAnalytics gaId="G-ZM11PQYS6D" />
         <Analytics />
         <Toaster position="top-center" />
 
-        {/* <SmoothScroll /> */}
-
-        <main>{children}</main>
+        <main>
+          <Navbar />
+          {children}
+        </main>
 
         <Footer />
       </body>

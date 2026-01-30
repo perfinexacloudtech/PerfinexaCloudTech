@@ -1,64 +1,53 @@
-"use client";
+import { OpenFormProps } from "@/types/model";
 
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 
-export default function FooterCTA() {
+const CTASection = ({ onOpen }: OpenFormProps) => {
   return (
-    <section className="relative w-full py-24 px-6 bg-[#050505] overflow-hidden">
-      
-      {/* DOTTED BACKGROUND LAYER 
-          - Uses your radial-gradient logic
-          - Uses a mask-image to fade out the left and right sides
-      */}
-      <div 
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundColor: "transparent",
-          backgroundImage: "radial-gradient(#444cf7 0.5px, transparent 0.5px)",
-          backgroundSize: "10px 10px",
-          WebkitMaskImage: "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
-          maskImage: "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
-        }}
-      />
-
-      {/* AMBIENT ORANGE GLOW (Matches your Screenshot) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-blue-500/30 blur-[120px] rounded-full pointer-events-none" />
-
-      <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center text-center">
-        
-        {/* Logo / Brand */}
-        <div className="flex items-center gap-2 mb-10">
-          <span className="text-blue-500 font-bold tracking-widest text-sm uppercase">
-            Perfinexa CloudTech
+    <section className="relative w-full py-10 md:py-24 px-6 md:px-12 bg-[#702C8B] overflow-hidden flex items-center justify-center">
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
+        <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
+          Let’s Build Something <br />
+          Amazing
+          <span className="relative inline-block ml-3 px-2">
+            <span className="absolute inset-0 bg-[#0F358A] rounded-sm -skew-x-6 transform scale-105 opacity-90"></span>
+            <span className="relative z-10">Together</span>
           </span>
-          <span className="w-1 h-1 bg-blue-500 rounded-full animate-pulse" />
-        </div>
-
-        {/* Heading */}
-        <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium text-white tracking-tighter mb-8">
-          Let’s Turn Your <br />
-          <span className="text-white">Dream Into Reality</span>
         </h2>
 
-        {/* Subtitle */}
-        <p className="text-zinc-500 text-lg md:text-xl max-w-2xl mb-12 font-light leading-relaxed">
-          We bring your vision to life with creativity and precision. <br className="hidden md:block" />
-          Let’s make it happen together.
+        <p className="text-sm md:text-xl text-blue-100 mb-12 font-light max-w-2xl mx-auto">
+          Your business needs world-class tech. we’re here to provide it.
         </p>
 
-        {/* Action Button */}
-        <Link
-          href="/#contact-section" 
-          className="group flex items-center gap-3 text-blue-500 text-2xl font-semibold transition-all hover:text-blue-400"
-        >
-          <span>Book A Call</span>
-          <div className="p-2 border border-blue-500/20 rounded-full group-hover:border-blue-500/50 group-hover:bg-orange-500/5 transition-all">
-            <ArrowUpRight className="w-6 h-6 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </div>
-        </Link>
+        <div className="flex flex-row items-center justify-center gap-2 md:gap-6">
+          <button
+            className="group bg-[#0F358A] text-white font-bold px-2 py-2 md:py-4 md:px-8  uppercase tracking-wide text-xs md:text-sm flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-blue-500/25"
+            onClick={onOpen}
+          >
+            Pitch Your Idea
+            <ArrowUpRight
+              size={18}
+              strokeWidth={2.5}
+              className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"
+            />
+          </button>
+
+          <button
+            className="group bg-transparent border border-white/80 hover:bg-white hover:text-[#0a1f44] text-white font-bold px-2 py-2 md:py-4 md:px-8  uppercase tracking-wide text-xs md:text-sm flex items-center justify-center gap-2 transition-all"
+            onClick={onOpen}
+          >
+            Request A Consultation
+            <ArrowUpRight
+              size={18}
+              strokeWidth={2.5}
+              className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"
+            />
+          </button>
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default CTASection;

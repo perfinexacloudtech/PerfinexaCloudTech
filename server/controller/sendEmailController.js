@@ -2,7 +2,7 @@ const { sendOfferEmail } = require("../utils/mailService");
 
 const sendEmailController = async (req, res) => {
   try {
-    const { email, name } = req.body;
+    const { email } = req.body;
 
     if (!email) {
       return res.status(400).json({
@@ -11,9 +11,9 @@ const sendEmailController = async (req, res) => {
       });
     }
 
-    const userName = name && name.trim() !== "" ? name : "There";
+    const userName = email && email.trim() !== "" ? email : "There";
 
-    const response = await sendOfferEmail(email, userName);
+    const response = await sendOfferEmail(email);
 
     return res.status(200).json({
       success: true,
