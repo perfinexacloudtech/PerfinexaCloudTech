@@ -1,10 +1,10 @@
 "use client";
 
-import { ArrowUpRight, Loader2, X } from "lucide-react";
+import { ArrowUpRight, Facebook, Loader2, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { FaLinkedin } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedin } from "react-icons/fa";
 import axios from "axios";
 
 const Footer = () => {
@@ -26,7 +26,7 @@ const Footer = () => {
     }
   ]
 
-    const servicesLink = [
+  const servicesLink = [
     {
       name:"Software Developement",
       path:"/services/software-development-services/"        
@@ -39,7 +39,7 @@ const Footer = () => {
       name:"Web Developement",
       path:"/services/website-development-services/"
     },
-      {
+    {
       name:"AI Solution",
       path:"#"
     }
@@ -88,13 +88,13 @@ const Footer = () => {
             </div>
             <div className="h-12 w-[1px] bg-white/30 mx-4 hidden md:block"></div>
             <p className="max-w-sm text-sm  hidden md:block">
-             Scalable Cloud & Software Solutions for Business Growth.
+              Scalable Cloud & Software Solutions for Business Growth.
             </p>
           </div>
 
-          <button className="bg-[#1e40af] hidden md:flex text-white hover:bg-blue-400  font-bold py-3 px-6 rounded-sm uppercase text-sm  items-center gap-2 transition-colors">
+          <a  href='/contact' className="bg-[#1e40af] hidden md:flex text-white hover:bg-blue-400  font-bold py-3 px-6 rounded-sm uppercase text-sm  items-center gap-2 transition-colors">
             Want To Join Us <ArrowUpRight size={16} />
-          </button>
+          </a>
         </div>
 
         {/* Bottom Grid */}
@@ -102,7 +102,7 @@ const Footer = () => {
           {/* Newsletter */}
           <div className="lg:col-span-1">
             <h4 className="font-bold  text-sm md:text-lg mb-4">
-             Enter your email to receive information about our services.
+              Enter your email to receive information about our services.
             </h4>
             <form
               className="mt-6"
@@ -176,11 +176,37 @@ const Footer = () => {
                 12,1st floor A-Wing, Mangalwari Complex, Sadar-Nagpur
               </li>
               <li className="flex gap-4 mt-6">
-                <FaLinkedin
-                  size={20}
-                  className="cursor-pointer hover:text-white"
+                <a
                   href="https://www.linkedin.com/company/perfinexacloudtech/posts/?feedView=all"
-                />
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaLinkedin
+                    size={20}
+                    className="cursor-pointer hover:text-white"
+                  />
+                </a>
+                <a
+                  href="https://www.instagram.com/perfinexa_cloudtech/?__pwa=1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaInstagram
+                    size={20}
+                    className="cursor-pointer hover:text-white"
+                  />
+                </a>
+
+                <a
+                  href="https://www.facebook.com/profile.php?id=61588109311172"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaFacebookF
+                    size={20}
+                    className="cursor-pointer hover:text-white"
+                  />
+                </a>
               </li>
               <li className="mt-6 text-xs ">©2026 All Rights Reserved</li>
             </ul>

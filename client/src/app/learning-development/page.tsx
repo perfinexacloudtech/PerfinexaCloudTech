@@ -107,24 +107,24 @@ export default function LandingPage() {
   return (
     <div
       ref={mainContainerRef}
-      className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-purple-200 relative overflow-x-hidden"
+      className="min-h-screen bg-slate-50 font-sans text-slate-900 relative overflow-x-hidden"
     >
       <Toaster position="top-center" />
 
       <SlideInForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
 
-      <section className="relative pt-28 pb-10 md:pb-16 px-4 md:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
+      <section className="relative pt-34 pb-10 md:pb-16 px-4 md:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
         <div className="hero-content inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 text-purple-800 text-xs font-bold tracking-wider uppercase mb-8 border border-purple-200">
           <span className="w-2 h-2  text-xs md:text-base rounded-full bg-purple-600 animate-pulse"></span>
           Nagpur's Premier IT Training
         </div>
 
-        <h2 className="hero-content text-3xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+        <h1 className="hero-content text-3xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
           Learn, Build & Intern with <br className="hidden md:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-indigo-600 italic">
             Real-World Projects
           </span>
-        </h2>
+        </h1>
 
         <p className="hero-content max-w-2xl mx-auto text-sm md:text-xl text-slate-600 mb-4 md:mb-10 leading-relaxed">
           Bridge the gap between academics and industry. Join our comprehensive

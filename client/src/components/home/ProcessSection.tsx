@@ -118,7 +118,7 @@ useEffect(() => {
           <div className=" hidden md:block w-full lg:w-1/2 h-full min-h-[500px] relative">
             <div className="absolute inset-0 bg-gray-200 rounded-2xl overflow-hidden">
                <img 
-                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                 src="https://res.cloudinary.com/dmsgbzk6y/image/upload/v1771157482/development-improvement-opportunity-strategy-growth-concept_cxsgqg.jpg" 
                  alt="Team Strategy Meeting" 
                  className="w-full h-full object-cover"
                />

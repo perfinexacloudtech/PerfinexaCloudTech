@@ -36,7 +36,7 @@ const HeroSection = ({ onOpen }: OpenFormProps) => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-svh md:min-h-calc[100vh-4rem] flex flex-col items-center justify-center overflow-hidden py-12 md:py-20"
+      className="relative w-full h-svh md:min-h-calc[100vh] flex flex-col items-center justify-center overflow-hidden py-12 md: pt-22 pb-10"
       style={{
         backgroundColor: "#fff",
         backgroundImage: "radial-gradient(#FFA12B 0.75px, transparent 0.75px)",
@@ -68,9 +68,9 @@ const HeroSection = ({ onOpen }: OpenFormProps) => {
 
         <div className="hero-element opacity-0 flex flex-row justify-center gap-2 md:gap-4 w-full sm:w-auto">
           <button className=" px-4 py-2 md:px-8 md:py-4 rounded-full bg-[#0f172a] text-white font-semibold hover:bg-slate-800 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 shadow-lg shadow-slate-900/20" onClick={onOpen}>
-            Get Free Consultation
+            Free Consultation
           </button>
-          <Link href="/learning-development/" className=" px-4 py-2 md:px-8 md:py-4 rounded-full border border-gray-200 text-slate-600 font-semibold hover:border-gray-400 hover:text-black hover:bg-gray-50 transition-all duration-300 bg-white shadow-sm hover:shadow-md">
+          <Link href="/learning-development/" className=" px-4 py-2 md:px-8 md:py-4 rounded-full border border-gray-400 text-slate-600 font-semibold hover:border-gray-400 hover:text-black hover:bg-gray-50 transition-all duration-300 bg-white shadow-sm hover:shadow-md">
             Learn Skills
           </Link>
         </div>

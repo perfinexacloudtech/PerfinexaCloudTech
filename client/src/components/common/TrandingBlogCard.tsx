@@ -39,13 +39,13 @@ export default function TrandingBlogCard({
     "Featured Work • Tech Updates • Insights & Blogs • ";
 
   return (
-    <section className=" py-16 px-4">
-      <div className="overflow-hidden border-y bg-slate-200 border-gray-800 py-4 mb-6 md:py-6 md:mb-14">
+    <section className=" py-16 ">
+      <div className="overflow-hidden border-y bg-slate-200 border-gray-800 py-2 mb-6 md:py-6 md:mb-14">
         <div className="flex gap-10 animate-marquee whitespace-nowrap">
           {[...Array(3)].map((_, i) => (
             <span
               key={i}
-              className="text-2xl sm:text-5xl font-bold uppercase tracking-wide opacity-70"
+              className="text-xl sm:text-4xl font-bold uppercase tracking-wide opacity-70"
             >
               {marqueeText}
             </span>
@@ -55,17 +55,17 @@ export default function TrandingBlogCard({
 
   <div
   className="
-    border border-zinc-300
+     md:border-y border-zinc-300
     flex md:grid  
     md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4
     overflow-x-auto md:overflow-visible
     snap-x snap-mandatory
     scroll-smooth
-    gap-4
+    gap-4 md:py-10 md:px-4
   "
 >
   {loading
-    ? Array.from({ length: 5 }).map((_, i) => (
+    ? Array.from({ length: 4 }).map((_, i) => (
         <SkeletonCard key={i} />
       ))
     : trandingBlog.map((blog) => (
@@ -133,11 +133,11 @@ export default function TrandingBlogCard({
 }
 
 export const SkeletonCard = () => (
-  <div className="bg-[#111] border border-gray-800 rounded-lg overflow-hidden animate-pulse">
-    <div className="aspect-[16/9] bg-gray-700" />
+  <div className="bg-white-50/10 border border-gray-400 rounded-lg overflow-hidden animate-pulse">
+    <div className="aspect-[16/9] bg-gray-200" />
     <div className="p-4 space-y-3">
-      <div className="h-4 bg-gray-700 rounded w-3/4" />
-      <div className="h-3 bg-gray-700 rounded w-1/2" />
+      <div className="h-4 bg-gray-300 rounded w-3/4" />
+      <div className="h-3 bg-gray-300 rounded w-1/2" />
     </div>
   </div>
 );

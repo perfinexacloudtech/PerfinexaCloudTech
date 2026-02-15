@@ -16,18 +16,18 @@ const AboutSection = () => {
   const stats = [
     {
       icon: <Rocket className="w-6 h-6" />,
-      number: "7+",
-      label: "Years of Experience",
+      number: "5+",
+      label: "Service Categories",
     },
     {
       icon: <Briefcase className="w-6 h-6" />,
       number: "10+",
-      label: "Industry Products",
+      label: "Technologies & Tools",
     },
     {
       icon: <UserCheck className="w-6 h-6" />,
-      number: "100+",
-      label: "Happy Clients",
+      number: "24/7",
+      label: "Support & Assistance",
     },
   ];
 
@@ -80,10 +80,10 @@ const AboutSection = () => {
   return (
     <section
       ref={containerRef}
-      className="w-full bg-[#702C8B] text-white py-16 px-6 md:px-12 lg:px-20 overflow-hidden"
+      className="w-full bg-[#702C8B] text-white py-16 px-4 md:px-12 lg:px-20 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-12 lg:gap-20 mb-10 md:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 md:gap-12 lg:gap-20 mb-10 md:mb-20">
           <div className="flex flex-col justify-start">
             <div className="anim-label flex items-center gap-4 mb-6">
               <span className="font-medium uppercase tracking-widest text-white/80 text-sm">
@@ -104,18 +104,10 @@ const AboutSection = () => {
 
             <div className=" space-y-4  md:space-y-6  text-white/80 font-light leading-relaxed">
               <p className=" text-xs md:text-sm anim-text">
-                We are a cloud-first IT company in Nagpur providing website
-                development, custom software, Salesforce solutions, AI
-                automation, and scalable digital products tailored to business
-                needs.
-              </p>
-
-              <p className=" text-xs md:text-sm anim-text">
-                With years of industry experience, our team has delivered
-                reliable software and enterprise-grade solutions across multiple
-                industries, earning trust for innovation, performance, and
-                long-term value.
-              </p>
+               Perfinexa CloudTech helps companies grow their businesses through secure, scalable, and future-ready digital solutions. We are a cloud-first IT company based in Nagpur that specializes in building websites, creating software, consulting for Salesforce, automating using AI, and developing enterprise solutions.
+Our goal at Perfinexa CloudTech is simple: turn problems into solutions by leveraging technology in a way that improves how companies operating to get more done, have happier customers and make more money.
+With years of practical experience in the field, we have developed technology, strategy, and innovation to create platforms that will be secure, fast, and ready for the future.
+              </p> 
             </div>
           </div>
         </div>

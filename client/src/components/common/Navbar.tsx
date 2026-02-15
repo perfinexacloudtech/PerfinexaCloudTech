@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowUpRight, ChevronDown, X } from "lucide-react";
 import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -50,6 +50,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const isMenuOpenRef = useRef(false);
+  const [showAlert, setShowAlert] = useState(true);
 
   useEffect(() => {
     isMenuOpenRef.current = isOpen;
@@ -143,11 +144,33 @@ const Navbar = () => {
         ref={navRef}
         className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 font-sans border-b ${
           isScrolled || isOpen
-            ? "bg-white/95 backdrop-blur-md border-gray-200 shadow-sm"
-            : "bg-white border-gray-50"
+            ? "bg-white/95 backdrop-blur-md border-gray-300 shadow-sm"
+            : "bg-white border-gray-300"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between py-4">
+  {showAlert && (
+          <div className="relative overflow-hidden bg-[#FFF9C4] py-2 px-4 border-b border-yellow-200">
+            <div className="absolute inset-0 w-[150%] h-full animate-shine pointer-events-none"
+              style={{
+                background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 60%, transparent 100%)',
+                transform: 'skewX(-20deg)'
+              }}
+            />
+            <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 relative z-10">
+              <div className="hidden md:block w-4" />
+              <p className="text-[11px] leading-tight md:text-sm text-gray-800 font-medium flex items-center justify-center gap-2 text-center flex-1">
+                <span role="img" aria-label="alert" className="shrink-0">🚨</span>
+                <span className="max-w-[280px] md:max-w-none">
+                  News Alert: Perfinexa CloudTech is now officially an approved Salesforce Consulting Partner.
+                </span>
+              </p>
+              <button onClick={() => setShowAlert(false)} className="p-1 text-gray-500 hover:text-black shrink-0">
+                <X size={14} />
+              </button>
+            </div>
+          </div>
+        )}
+        <div className="max-w-7xl mx-auto px-4 md:px-10 lg:px-16 flex items-center justify-between py-4">
           <Link
             href="/"
             className="relative z-50"
@@ -216,9 +239,9 @@ const Navbar = () => {
             <div className="hidden lg:block">
               <Link
                 href="/contact"
-                className="bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold py-3 px-6 flex items-center gap-2 transition-colors uppercase tracking-wide rounded-sm"
+                className="bg-black hover:bg-zinc-700 text-white text-sm font-bold py-3 px-6 flex items-center gap-2 transition-colors uppercase tracking-wide rounded-full"
               >
-                Contact
+                Lets's Talk
                 <ArrowUpRight size={18} strokeWidth={2.5} />
               </Link>
             </div>
@@ -246,7 +269,7 @@ const Navbar = () => {
       </nav>
 
       {isOpen && (
-        <div className="fixed top-[85px] left-0 right-0 bottom-0 z-40 lg:hidden flex flex-col px-6 backdrop-blur-xl animate-in fade-in zoom-in-95 duration-200 bg-white/50">
+        <div className="fixed top-[120px] left-0 right-0 bottom-0 z-40 lg:hidden flex flex-col px-6 backdrop-blur-xl animate-in fade-in zoom-in-95 duration-200 bg-white/50">
           <div className="bg-white border border-gray-200 rounded-3xl p-6 flex flex-col gap-2 shadow-2xl mt-2 max-h-[80vh] overflow-y-auto">
             {navLinks.map((item) => (
               <div

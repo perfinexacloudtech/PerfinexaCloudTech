@@ -104,15 +104,10 @@ export default function ServiceContent({ slug }: { slug: string }) {
           </h1>
           <p className=" text-sm md:text-xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
             {service.hero.description}
-          </p>
-          <div className="flex flex-wrap gap-2 md:gap-4">
+          </p>      
             <button className="bg-linear-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 md:px-8 md:py-4 rounded-lg font-bold hover:shadow-[0_0_20px_rgba(124,58,237,0.5)] transition-all duration-300 flex items-center gap-2">
               Get a Quote <ArrowRight size={18} />
-            </button>
-            <button className="bg-white/5 border border-white/10 text-white px-4 py-2 md:px-8 md:py-4 rounded-lg font-bold hover:bg-white/10 transition backdrop-blur-md">
-              View Portfolio
-            </button>
-          </div>
+            </button> 
         </div>
       </section>
 

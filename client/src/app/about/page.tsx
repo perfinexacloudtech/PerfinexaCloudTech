@@ -260,15 +260,15 @@ export default function AboutPage() {
       ref={mainRef}
       className="font-sans text-slate-800 bg-[#2a1b5e] min-h-screen overflow-x-hidden selection:bg-[#fde047] selection:text-[#2a1b5e]"
     >
-      <section className="relative w-full pt-32 pb-12 px-6 md:px-12 lg:px-24 bg-[#2a1b5e] text-white">
+      <section className="relative w-full pt-34 pb-12 px-0 md:px-12 lg:px-24 bg-[#2a1b5e] text-white">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="hero-title text-3xl md:text-7xl font-bold mb-2 md:mb-8 leading-tight tracking-tight">
             Innovating for a <br />
             <span className="text-[#fde047]">Digital Tomorrow</span>
           </h1>
 
-          <div className="hero-quote max-w-4xl mx-auto mt-14 mb-0 bg-white/5 p-2 md:p-8 rounded-r-lg border-l-4 border-[#fde047] backdrop-blur-sm">
-            <p className="text-sm md:text-2xl italic text-gray-200 font-light">
+          <div className="hero-quote max-w-4xl mx-auto mt-6 md:mt-14 mb-0 bg-white/5 p-2 md:p-8 rounded-r-lg border-l-4 border-[#fde047] backdrop-blur-sm">
+            <p className="text-xs md:text-2xl italic text-gray-200 font-light">
               Perfinexa Cloudtech is a cloud-first IT company in Nagpur
               dedicated to building scalable, secure, and future-ready digital
               solutions for businesses across Nagpur and India. As technologies

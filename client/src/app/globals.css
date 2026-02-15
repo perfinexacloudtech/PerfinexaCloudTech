@@ -437,7 +437,26 @@ background-repeat: repeat;
 }
 
 .animate-domain-scroll {
-  animation: domain-scroll 15s linear infinite;
+  animation: domain-scroll 500s linear infinite;
   will-change: transform;
 }
 
+
+@layer utilities {
+  @keyframes shine {
+    0% {
+      left: -150%;
+    }
+    30% {
+      left: 150%;
+    }
+    100% {
+      left: 150%;
+    }
+  }
+
+  .animate-shine {
+    position: absolute;
+    animation: shine 5s ease-in-out infinite;
+  }
+}

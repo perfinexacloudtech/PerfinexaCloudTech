@@ -210,9 +210,9 @@ function ContactSection() {
           <div className="inline-block px-4 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-bold uppercase tracking-wider mb-4 border border-purple-200">
             Get in Touch
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
             Contact <span className="italic text-[#4c1d95]">Us</span>
-          </h2>
+          </h1>
           <p className=" text-xs md:text-sm text-slate-500 mt-4 max-w-2xl mx-auto">
             Have questions about our IT services or internship programs? Our
             team is here to help you navigate your digital journey.
