@@ -41,6 +41,7 @@ const navLinks = [
       },
     ],
   },
+   { name: "Certificate", href: "/certificate" },
   { name: "Blogs", href: "/blog" },
 ];
 

@@ -46,8 +46,9 @@
 }
 
 
-body,html{
-  scroll-behavior: smooth;
+/* Keep native scrolling responsive, especially for form controls and sliders. */
+html {
+  scroll-behavior: auto;
 }
 
 :root {
