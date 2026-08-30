@@ -161,15 +161,57 @@ function loadImage(source: string) {
   });
 }
 
-function drawPortrait(context: CanvasRenderingContext2D, image: HTMLImageElement, zoom: number, x: number, y: number) {
-  const centerX = 247, centerY = 434, radius = 140;
-  const scale = Math.max((radius * 2) / image.naturalWidth, (radius * 2) / image.naturalHeight);
-  const width = image.naturalWidth * scale * zoom, height = image.naturalHeight * scale * zoom;
+function drawPortrait(
+  context: CanvasRenderingContext2D,
+  image: HTMLImageElement,
+  zoom: number,
+  x: number,
+  y: number
+) {
+  const canvasWidth = context.canvas.width;
+  const canvasHeight = context.canvas.height;
+
+  // Same position/size as preview
+  const left = canvasWidth * 0.078;
+  const top = canvasHeight * 0.315;
+  const width = canvasWidth * 0.184;
+  const height = canvasHeight * 0.282;
+
+  const centerX = left + width / 2;
+  const centerY = top + height / 2;
+
+  // Circle radius
+  const radius = Math.min(width, height) / 2;
+
+  const scale = Math.max(
+    width / image.naturalWidth,
+    height / image.naturalHeight
+  );
+
+  const drawWidth = image.naturalWidth * scale * zoom;
+  const drawHeight = image.naturalHeight * scale * zoom;
+
   context.save();
+
   context.beginPath();
-  context.arc(centerX, centerY, radius, 0, Math.PI * 2);
+  context.arc(
+    centerX,
+    centerY,
+    radius,
+    0,
+    Math.PI * 2
+  );
+
   context.clip();
-  context.drawImage(image, centerX - width / 2 + ((radius * 2 * x) / 100), centerY - height / 2 + ((radius * 2 * y) / 100), width, height);
+
+  context.drawImage(
+    image,
+    centerX - drawWidth / 2 + (width * x / 100),
+    centerY - drawHeight / 2 + (height * y / 100),
+    drawWidth,
+    drawHeight
+  );
+
   context.restore();
 }
 
