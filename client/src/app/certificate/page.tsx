@@ -27,6 +27,14 @@ export default function CertificatePage() {
     });
   };
 
+
+  function formatName(name: string) {
+  return name
+    .trim()
+    .toLowerCase()
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
   const downloadCertificate = async () => {
     if (!name.trim() || !photoUrl) return;
     const [template, portrait] = await Promise.all([loadImage(TEMPLATE), loadImage(photoUrl)]);
@@ -37,7 +45,7 @@ export default function CertificatePage() {
     if (!context) return;
     context.drawImage(template, 0, 0);
     drawPortrait(context, portrait, photoZoom, photoX, photoY);
-    drawName(context, name.trim());
+    drawName(context, formatName(name));
     const link = document.createElement("a");
     link.download = `${name.trim().replace(/[^a-z0-9]+/gi, "-") || "participant"}-certificate.png`;
     link.href = canvas.toDataURL("image/png");
@@ -140,7 +148,7 @@ export default function CertificatePage() {
         }, 51px)`,
       }}
     >
-      {name.trim()}
+      {formatName(name)}
     </p>
   </>
 )}
