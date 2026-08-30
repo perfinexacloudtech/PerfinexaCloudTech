@@ -128,7 +128,7 @@ export default function CertificatePage() {
         italic
         leading-none
         text-[#b47b16]
-        break-words
+        break-words capitalize
       "
       style={{
         fontSize: `clamp(10px, ${
