@@ -84,14 +84,66 @@ export default function CertificatePage() {
           <div className="overflow-hidden rounded-xl bg-white shadow-xl ring-1 ring-slate-200">
             <div className="relative aspect-[3/2] w-full overflow-hidden" aria-label="Certificate preview">
               <img src={TEMPLATE} alt="Certificate template" className="h-full w-full object-cover" />
-              {photoUrl && <div className="absolute left-[6.9%] top-[28.6%] h-[28.2%] w-[18.4%] overflow-hidden rounded-full">
+              {photoUrl && <div className="absolute left-[7.8%] top-[31.5%] h-[28.2%] w-[18.4%] overflow-hidden rounded-full">
                 <img src={photoUrl} alt="Participant" className="h-full w-full object-cover" style={{ transform: `translate(${photoX}%, ${photoY}%) scale(${photoZoom})` }} />
               </div>}
-              {name.trim() && <>
-                <div className="absolute left-[29%] top-[47.4%] h-[9%] w-[45%] bg-[#fffefd]" />
-                <div className="absolute left-[29.2%] top-[56.5%] h-px w-[44%] bg-[#071d53]" />
-                <p className="absolute left-[29%] top-[47.4%] z-10 w-[45%] text-center font-serif text-[clamp(12px,3.7vw,51px)] italic leading-none text-[#b47b16]">{name.trim()}</p>
-              </>}
+             { name.trim() && (
+  <>
+    {/* Cover the original golden line */}
+    <div
+      className="
+        absolute
+        left-[28.5%]
+        top-[46.5%]
+        z-10
+        h-[11%]
+        w-[46%]
+      "
+    />
+
+    {/* New blue line below the name */}
+    <div
+      className="
+        absolute
+        left-[29.2%]
+        top-[56.5%]
+        z-20
+        h-px
+        w-[44%]
+        bg-[#071d53]
+      "
+    />
+
+    {/* Participant name */}
+    <p
+      className="
+        absolute
+        left-[29%]
+        top-[50.4%]
+        z-30
+        w-[45%]
+        px-2
+        text-center
+        font-serif
+        italic
+        leading-none
+        text-[#b47b16]
+        break-words
+      "
+      style={{
+        fontSize: `clamp(10px, ${
+          name.trim().length > 30
+            ? "2vw"
+            : name.trim().length > 20
+            ? "2vw"
+            : "2vw"
+        }, 51px)`,
+      }}
+    >
+      {name.trim()}
+    </p>
+  </>
+)}
             </div>
           </div>
         </div>
