@@ -27,29 +27,107 @@ export default function CertificatePage() {
     });
   };
 
-
   function formatName(name: string) {
-  return name
-    .trim()
-    .toLowerCase()
-    .replace(/\b\w/g, (char) => char.toUpperCase());
-}
+    return name.trim().replace(/\s+/g, " ");
+  }
+
+  function createSafeFileName(name: string) {
+    return (
+      name
+        .trim()
+        .replace(/[<>:"/\\|?*\x00-\x1F]/g, "")
+        .replace(/\s+/g, "-")
+        .slice(0, 80) || "participant"
+    );
+  }
 
   const downloadCertificate = async () => {
     if (!name.trim() || !photoUrl) return;
-    const [template, portrait] = await Promise.all([loadImage(TEMPLATE), loadImage(photoUrl)]);
-    const canvas = document.createElement("canvas");
-    canvas.width = template.naturalWidth;
-    canvas.height = template.naturalHeight;
-    const context = canvas.getContext("2d");
-    if (!context) return;
-    context.drawImage(template, 0, 0);
-    drawPortrait(context, portrait, photoZoom, photoX, photoY);
-    drawName(context, formatName(name));
-    const link = document.createElement("a");
-    link.download = `${name.trim().replace(/[^a-z0-9]+/gi, "-") || "participant"}-certificate.png`;
-    link.href = canvas.toDataURL("image/png");
-    link.click();
+
+    try {
+      const [template, portrait] = await Promise.all([
+        loadImage(TEMPLATE),
+        loadImage(photoUrl),
+      ]);
+
+      const canvas = document.createElement("canvas");
+
+      canvas.width = template.naturalWidth;
+      canvas.height = template.naturalHeight;
+
+      const context = canvas.getContext("2d");
+
+      if (!context) return;
+
+      context.drawImage(template, 0, 0);
+
+      drawPortrait(
+        context,
+        portrait,
+        photoZoom,
+        photoX,
+        photoY
+      );
+
+      drawName(
+        context,
+        formatName(name)
+      );
+
+      canvas.toBlob(async (blob) => {
+        if (!blob) return;
+
+        const fileName = `${createSafeFileName(name)}-certificate.png`;
+
+        const file = new File(
+          [blob],
+          fileName,
+          {
+            type: "image/png",
+          }
+        );
+
+        // iPhone / iPad Safari
+        if (
+          typeof navigator !== "undefined" &&
+          navigator.share &&
+          navigator.canShare &&
+          navigator.canShare({ files: [file] })
+        ) {
+          try {
+            await navigator.share({
+              files: [file],
+              title: "Certificate",
+              text: "Your certificate",
+            });
+
+            return;
+          } catch (error) {
+            // User cancelled share sheet
+            if ((error as DOMException)?.name === "AbortError") {
+              return;
+            }
+          }
+        }
+
+        // Android Chrome / Desktop fallback
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = fileName;
+
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        setTimeout(() => {
+          URL.revokeObjectURL(url);
+        }, 1000);
+      }, "image/png");
+    } catch (error) {
+      console.error("Certificate generation failed:", error);
+    }
   };
 
   const readyToDownload = Boolean(name.trim() && photoUrl);
@@ -95,63 +173,63 @@ export default function CertificatePage() {
               {photoUrl && <div className="absolute left-[7.8%] top-[31.5%] h-[28.2%] w-[18.4%] overflow-hidden rounded-full">
                 <img src={photoUrl} alt="Participant" className="h-full w-full object-cover" style={{ transform: `translate(${photoX}%, ${photoY}%) scale(${photoZoom})` }} />
               </div>}
-             { name.trim() && (
-  <>
-    {/* Cover the original golden line */}
-    <div
-      className="
-        absolute
-        left-[28.5%]
-        top-[46.5%]
-        z-10
-        h-[11%]
-        w-[46%]
-      "
-    />
+              {name.trim() && (
+                <>
+                  {/* Cover the original golden line */}
+                  <div
+                    className="
+                      absolute
+                      left-[28.5%]
+                      top-[46.5%]
+                      z-10
+                      h-[11%]
+                      w-[46%]
+                    "
+                  />
 
-    {/* New blue line below the name */}
-    <div
-      className="
-        absolute
-        left-[29.2%]
-        top-[56.5%]
-        z-20
-        h-px
-        w-[44%]
-        bg-[#071d53]
-      "
-    />
+                  {/* New blue line below the name */}
+                  <div
+                    className="
+                      absolute
+                      left-[29.2%]
+                      top-[56.5%]
+                      z-20
+                      h-px
+                      w-[44%]
+                      bg-[#071d53]
+                    "
+                  />
 
-    {/* Participant name */}
-    <p
-      className="
-        absolute
-        left-[29%]
-        top-[50.4%]
-        z-30
-        w-[45%]
-        px-2
-        text-center
-        font-serif
-        italic
-        leading-none
-        text-[#b47b16]
-        break-words capitalize
-      "
-      style={{
-        fontSize: `clamp(10px, ${
-          name.trim().length > 30
-            ? "2vw"
-            : name.trim().length > 20
-            ? "2vw"
-            : "2vw"
-        }, 51px)`,
-      }}
-    >
-      {formatName(name)}
-    </p>
-  </>
-)}
+                  {/* Participant name */}
+                  <p
+                    className="
+                      absolute
+                      left-[29%]
+                      top-[50.4%]
+                      z-30
+                      w-[45%]
+                      px-2
+                      text-center
+                      font-serif
+                      italic
+                      leading-none
+                      text-[#b47b16]
+                      break-words
+                    "
+                    style={{
+                      fontSize: `clamp(10px, ${
+                        name.trim().length > 30
+                          ? "2vw"
+                          : name.trim().length > 20
+                          ? "2vw"
+                          : "2vw"
+                      }, 51px)`,
+                    }}
+                  >
+                    {formatName(name)}
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -241,7 +319,10 @@ function drawName(context: CanvasRenderingContext2D, name: string) {
   let fontSize = 58;
   context.textAlign = "center";
   context.textBaseline = "middle";
-  do { context.font = `italic ${fontSize}px Georgia, serif`; fontSize -= 2; } while (context.measureText(name).width > 620 && fontSize > 24);
+  do {
+    context.font = `italic ${fontSize}px Georgia, serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    fontSize -= 2;
+  } while (context.measureText(name).width > 620 && fontSize > 24);
   context.fillStyle = "#b47b16";
   context.fillText(name, 786, 539);
 }
