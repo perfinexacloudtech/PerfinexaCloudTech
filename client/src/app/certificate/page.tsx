@@ -152,7 +152,7 @@ export default function CertificatePage() {
             <label className="mt-6 block text-sm font-semibold" htmlFor="participant-name">Full name</label>
             <div className="mt-2 flex items-center rounded-xl border border-slate-300 bg-white px-3 focus-within:border-[#bd861f] focus-within:ring-2 focus-within:ring-[#bd861f]/20">
               <UserRound className="h-5 w-5 text-slate-400" aria-hidden="true" />
-              <input id="participant-name" className="w-full bg-transparent px-3 py-3.5 text-slate-800 outline-none placeholder:text-slate-400" placeholder="Enter your full name" value={name} onChange={(event) => setName(formatName(event.target.value))} />
+              <input id="participant-name" className="w-full bg-transparent px-3 py-3.5 text-slate-800 outline-none placeholder:text-slate-400" placeholder="Enter your full name" value={name} onChange={(event) => setName(event.target.value)} />
             </div>
             <p className="mt-6 text-sm font-semibold">Profile photo</p>
             <button type="button" onClick={() => fileInputRef.current?.click()} className="mt-2 flex w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-[#bd861f]/50 bg-[#fffaf0] px-4 py-6 text-center transition hover:border-[#bd861f] hover:bg-[#fff7e7]">
