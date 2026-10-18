@@ -10,8 +10,8 @@ const TEMPLATE = "/certificate-template.png";
 const PHOTO_FRAME = {
   left: 7.8,
   top: 28.6, // was 31.5 — moves the circle upward
-  width: 17.0,
-  height: 17.0,
+    width: 18.3,
+  height: 28.0,
 };
 
 export default function CertificatePage() {
