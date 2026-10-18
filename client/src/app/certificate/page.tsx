@@ -8,8 +8,8 @@ const TEMPLATE = "/certificate-template.png";
 // Profile-photo frame coordinates are percentages of the certificate background.
 // Update these four values to move/resize the circle for a different template.
 const PHOTO_FRAME = {
-  left: 7.8,
-  top: 28.7, // was 31.5 — moves the circle upward
+  left: 7.9,
+  top: 28.8, // was 31.5 — moves the circle upward
     width: 18.3,
   height: 28.0,
 };
