@@ -5,6 +5,15 @@ import { Download, ImagePlus, UserRound } from "lucide-react";
 
 const TEMPLATE = "/certificate-template.png";
 
+// Profile-photo frame coordinates are percentages of the certificate background.
+// Update these four values to move/resize the circle for a different template.
+const PHOTO_FRAME = {
+  left: 7.8,
+  top: 31.5,
+  width: 18.4,
+  height: 28.2,
+};
+
 export default function CertificatePage() {
   const [name, setName] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
@@ -175,8 +184,25 @@ export default function CertificatePage() {
           <div className="overflow-hidden rounded-xl bg-white shadow-xl ring-1 ring-slate-200">
             <div className="relative aspect-[3/2] w-full overflow-hidden" aria-label="Certificate preview">
               <img src={TEMPLATE} alt="Certificate template" className="h-full w-full object-cover" />
-              {photoUrl && <div className="absolute left-[7.8%] top-[31.5%] h-[28.2%] w-[18.4%] overflow-hidden rounded-full">
-                <img src={photoUrl} alt="Participant" className="h-full w-full object-cover" style={{ transform: `translate(${photoX}%, ${photoY}%) scale(${photoZoom})` }} />
+              {photoUrl && <div
+                className="absolute overflow-hidden rounded-full"
+                style={{
+                  left: `${PHOTO_FRAME.left}%`,
+                  top: `${PHOTO_FRAME.top}%`,
+                  width: `${PHOTO_FRAME.width}%`,
+                  height: `${PHOTO_FRAME.height}%`,
+                }}
+              >
+                <img
+                  src={photoUrl}
+                  alt="Participant"
+                  className="h-full w-full object-cover"
+                  style={{
+                    // Keep preview movement frame-relative, matching the PNG renderer.
+                    objectPosition: `${50 - photoX}% ${50 - photoY}%`,
+                    transform: `scale(${photoZoom})`,
+                  }}
+                />
               </div>}
               {name.trim() && (
                 <>
@@ -263,10 +289,10 @@ function drawPortrait(
   const canvasHeight = context.canvas.height;
 
   // Same position/size as preview
-  const left = canvasWidth * 0.078;
-  const top = canvasHeight * 0.315;
-  const width = canvasWidth * 0.184;
-  const height = canvasHeight * 0.282;
+  const left = canvasWidth * (PHOTO_FRAME.left / 100);
+  const top = canvasHeight * (PHOTO_FRAME.top / 100);
+  const width = canvasWidth * (PHOTO_FRAME.width / 100);
+  const height = canvasHeight * (PHOTO_FRAME.height / 100);
 
   const centerX = left + width / 2;
   const centerY = top + height / 2;
