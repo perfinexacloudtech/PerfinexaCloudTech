@@ -9,7 +9,7 @@ const TEMPLATE = "/certificate-template.png";
 // Update these four values to move/resize the circle for a different template.
 const PHOTO_FRAME = {
   left: 7.8,
-  top: 28.6, // was 31.5 — moves the circle upward
+  top: 28.7, // was 31.5 — moves the circle upward
     width: 18.3,
   height: 28.0,
 };
