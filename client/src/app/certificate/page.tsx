@@ -278,6 +278,7 @@ function loadImage(source: string) {
   });
 }
 
+
 function drawPortrait(
   context: CanvasRenderingContext2D,
   image: HTMLImageElement,
@@ -288,49 +289,49 @@ function drawPortrait(
   const canvasWidth = context.canvas.width;
   const canvasHeight = context.canvas.height;
 
-  // Same position/size as preview
   const left = canvasWidth * (PHOTO_FRAME.left / 100);
   const top = canvasHeight * (PHOTO_FRAME.top / 100);
   const width = canvasWidth * (PHOTO_FRAME.width / 100);
   const height = canvasHeight * (PHOTO_FRAME.height / 100);
 
-  const centerX = left + width / 2;
-  const centerY = top + height / 2;
-
-  // Circle radius
-  const radius = Math.min(width, height) / 2;
-
-  const scale = Math.max(
-    width / image.naturalWidth,
-    height / image.naturalHeight
-  );
-
-  const drawWidth = image.naturalWidth * scale * zoom;
-  const drawHeight = image.naturalHeight * scale * zoom;
-
   context.save();
 
+  // Match the preview's rounded-full clipping.
   context.beginPath();
-  context.arc(
-    centerX,
-    centerY,
-    radius,
+  context.ellipse(
+    left + width / 2,
+    top + height / 2,
+    width / 2,
+    height / 2,
+    0,
     0,
     Math.PI * 2
   );
-
   context.clip();
+
+  // Match CSS object-fit: cover.
+  const scale =
+    Math.max(width / image.naturalWidth, height / image.naturalHeight) *
+    zoom;
+
+  const drawWidth = image.naturalWidth * scale;
+  const drawHeight = image.naturalHeight * scale;
+
+  // Match preview object-position and transform.
+  const offsetX = (width * x) / 100;
+  const offsetY = (height * y) / 100;
 
   context.drawImage(
     image,
-    centerX - drawWidth / 2 + (width * x / 100),
-    centerY - drawHeight / 2 + (height * y / 100),
+    left + (width - drawWidth) / 2 + offsetX,
+    top + (height - drawHeight) / 2 + offsetY,
     drawWidth,
     drawHeight
   );
 
   context.restore();
 }
+
 
 function RangeControl({ label, value, min, max, step, onChange }: { label: string; value: number; min: number; max: number; step: number; onChange: (value: number) => void }) {
   return <label className="block text-xs font-medium text-slate-600">{label}
