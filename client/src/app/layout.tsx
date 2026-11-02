@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { getPageMetadata } from "@/lib/Metadata";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Navbar from "@/components/common/Navbar";
+import CookieBanner from "@/components/common/CookieBanner";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -41,6 +42,7 @@ export default function RootLayout({
         </main>
 
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

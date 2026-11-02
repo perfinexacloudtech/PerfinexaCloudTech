@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { X } from "lucide-react";
 import gsap from "gsap";
 import toast from "react-hot-toast";
@@ -23,6 +24,7 @@ export default function ConsultationDrawer({ isOpen, onClose }: DrawerProps) {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [consent, setConsent] = useState(false);
 
   useEffect(() => {
     const panel = panelRef.current;
@@ -65,6 +67,10 @@ export default function ConsultationDrawer({ isOpen, onClose }: DrawerProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!consent) {
+      toast.error("Please agree to our Privacy Policy to proceed.");
+      return;
+    }
     setIsSubmitting(true);
 
     try {
@@ -102,6 +108,7 @@ export default function ConsultationDrawer({ isOpen, onClose }: DrawerProps) {
         subject: "",
         message: "",
       });
+      setConsent(false);
 
       if (onClose) {
         onClose();
@@ -222,6 +229,35 @@ export default function ConsultationDrawer({ isOpen, onClose }: DrawerProps) {
                   className="resize-none w-full  border border-gray-800 rounded-sm md:rounded-xl p-2 md:p-4  focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder:text-gray-600"
                   placeholder="Tell us about your goals..."
                 ></textarea>
+              </div>
+
+              <div className="form-field-anim opacity-0 text-xs text-gray-600">
+                <label className="flex items-start gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    required
+                    checked={consent}
+                    onChange={(e) => setConsent(e.target.checked)}
+                    className="mt-0.5 h-3.5 w-3.5 rounded border-gray-400 text-blue-600 focus:ring-blue-500 cursor-pointer shrink-0"
+                  />
+                  <span>
+                    By submitting this form, you agree to our{" "}
+                    <Link
+                      href="/privacy-policy"
+                      className="text-blue-600 underline hover:text-blue-800"
+                    >
+                      Privacy Policy
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                      href="/terms-and-conditions"
+                      className="text-blue-600 underline hover:text-blue-800"
+                    >
+                      Terms
+                    </Link>
+                    , and consent to being contacted by Perfinexa CloudTech.
+                  </span>
+                </label>
               </div>
 
               <div className=" pt-2 form-field-anim opacity-0">

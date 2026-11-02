@@ -242,7 +242,7 @@ const Navbar = () => {
                 href="/contact"
                 className="bg-black hover:bg-zinc-700 text-white text-sm font-bold py-3 px-6 flex items-center gap-2 transition-colors uppercase tracking-wide rounded-full"
               >
-                Lets's Talk
+                Let&apos;s Talk
                 <ArrowUpRight size={18} strokeWidth={2.5} />
               </Link>
             </div>

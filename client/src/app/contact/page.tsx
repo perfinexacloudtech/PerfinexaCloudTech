@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import {
   MapPin,
   Mail,
@@ -128,6 +129,7 @@ function ContactSection() {
     message: "",
   });
 
+  const [consent, setConsent] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -148,6 +150,11 @@ function ContactSection() {
 
     if (!formData.message.trim() || formData.message.length < 10) {
       newErrors.message = "Message must be at least 10 characters";
+    }
+
+    if (!consent) {
+      newErrors.consent =
+        "You must agree to our Privacy Policy and Terms to proceed";
     }
 
     return Object.keys(newErrors).length === 0;
@@ -196,6 +203,7 @@ function ContactSection() {
         inquiryType: "IT Services",
         message: "",
       });
+      setConsent(false);
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
     } finally {
@@ -369,6 +377,44 @@ function ContactSection() {
                 ></textarea>
                 {errors.message && (
                   <p className="text-red-500 text-xs">{errors.message}</p>
+                )}
+              </div>
+
+              {/* Consent checkbox */}
+              <div className="space-y-1">
+                <label className="flex items-start gap-2.5 cursor-pointer text-xs md:text-sm text-slate-600">
+                  <input
+                    type="checkbox"
+                    required
+                    checked={consent}
+                    onChange={(e) => {
+                      setConsent(e.target.checked);
+                      if (errors.consent) {
+                        setErrors({ ...errors, consent: "" });
+                      }
+                    }}
+                    className="mt-0.5 h-4 w-4 rounded border-slate-300 text-purple-600 focus:ring-purple-500 cursor-pointer shrink-0"
+                  />
+                  <span>
+                    By submitting this form, you agree to our{" "}
+                    <Link
+                      href="/privacy-policy"
+                      className="text-[#4c1d95] font-semibold underline hover:text-[#3b0764]"
+                    >
+                      Privacy Policy
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                      href="/terms-and-conditions"
+                      className="text-[#4c1d95] font-semibold underline hover:text-[#3b0764]"
+                    >
+                      Terms
+                    </Link>
+                    , and consent to being contacted by Perfinexa CloudTech.
+                  </span>
+                </label>
+                {errors.consent && (
+                  <p className="text-red-500 text-xs pl-6">{errors.consent}</p>
                 )}
               </div>
 
